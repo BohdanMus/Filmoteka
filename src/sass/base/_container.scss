@@ -2,19 +2,19 @@
     margin-right: auto;
     margin-left: auto;
   
-    @include mq(mobile) {
-      width: 320px;
-      padding-left: 20px;
-      padding-right: 20px;
-    }
-  
-    @include mq(tablet) {
-      width: 768px;
-      padding-left: 32px;
-      padding-right: 32px;
-    }
-  
-    @include mq(desktop) {
-      width: 1280px;
-    }
+    @include mobile {
+        max-width: 320px;
+        padding-left: 20px;
+          padding-right: 20px;
+      }
+    
+      @include tablet {
+        max-width: 768px;
+        padding-left: 32px;
+          padding-right: 32px;
+      }
+    
+      @include desktop {
+        max-width: 1280px;
+      }
   }
