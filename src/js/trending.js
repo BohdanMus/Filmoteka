@@ -1,7 +1,7 @@
-import { getGenres, genresArray } from './js/genres';
-import { galleryRender } from './js/trending';
+import { genresArray, getGenres } from './genres';
+import { fetchMovies, prePoster, galleryEl } from './API';
 
-async function galleryRender() {
+export async function galleryRender() {
   const results = await fetchMovies();
 
   const markup = results.results
@@ -26,5 +26,3 @@ async function galleryRender() {
     .join('');
   galleryEl.insertAdjacentHTML('beforeend', markup);
 }
-
-galleryRender();
