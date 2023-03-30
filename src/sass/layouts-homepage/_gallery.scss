@@ -1,0 +1,53 @@
+.gallery-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+
+  @include tablet {
+    gap: 32px;
+  }
+
+  @include desktop {
+    gap: 16px;
+  }
+}
+
+.film-card__img {
+  display: inline-block;
+  max-width: 280px;
+  height: 402px;
+
+  @include tablet {
+    max-width: 336px;
+    height: 455px;
+  }
+  @include desktop {
+    max-width: 394px;
+    height: 574px;
+  }
+}
+
+.film-card_link {
+  display: block;
+  width: 100%;
+}
+
+.film-card__title {
+  margin-top: 10px;
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 1.2;
+  color: #000000;
+
+  @include tablet {
+    margin-top: 8px;
+  }
+  @include desktop {
+    margin-top: 12px;
+  }
+}
+.film-card__caption {
+  display: flex;
+}
