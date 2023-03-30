@@ -12,10 +12,15 @@
   }
 }
 
+.film-card {
+  transition: transform 250ms;
+}
+
 .film-card__img {
   display: inline-block;
   max-width: 280px;
   height: 402px;
+  border-radius: 5px;
 
   @include tablet {
     max-width: 336px;
@@ -40,6 +45,7 @@
   font-size: 20px;
   line-height: 1.2;
   color: #000000;
+  text-transform: uppercase;
 
   @include tablet {
     margin-top: 8px;
@@ -50,4 +56,20 @@
 }
 .film-card__caption {
   display: flex;
+  gap: 10px;
+  color: #ff6b08;
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 1.2;
+}
+
+.film-card__date:before {
+  content: '';
+  display: inline-block;
+  width: 1.5px;
+  height: 16px;
+  margin-right: 10px;
+  background-color: #ff6b08;
 }
