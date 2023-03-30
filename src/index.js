@@ -1,3 +1,4 @@
+
 import { getGenres, genresArray } from './js/genres';
 import { galleryRender } from './js/trending';
 
@@ -28,3 +29,5 @@ async function galleryRender() {
 }
 
 galleryRender();
+import { showSpinner, hideSpinner } from './js/spinner';
+
