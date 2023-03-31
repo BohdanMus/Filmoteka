@@ -1,0 +1,211 @@
+.header {
+    height: 216px;
+    position: relative;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.56);
+    background-image: url(../images/Home/header-mob-1x.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+
+    @include retina {
+        background-image: url(../images/Home/header-mob-2x.jpg);
+    }
+
+    @include tablet {
+        background-image: url(../images/Home/header-tablet-1x.jpg);
+
+        @include retina {
+            background-image: url(../images/Home/header-tablet-2x.jpg);
+        }
+    }
+
+    @include desktop {
+        background-image: url(../images/Home/header-desktop-1x.jpg);
+
+        @include retina {
+            background-image: url(../images/Home/header-desktop-2x.jpg);
+        }
+    }
+}
+
+
+
+.header-container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 40px;
+    padding-bottom: 54px;
+}
+
+.logo-film:hover>svg,
+.logo-film:focus>svg,
+.logo-film:hover>span,
+.logo-film:focus>span {
+    color: var(--secondaryAccentColor);
+    stroke: var(--secondaryAccentColor);
+
+    text-shadow: 0 0 15px var(--secondaryAccentColor);
+    transition: all 0.3s ease-in-out;
+}
+
+.logo {
+    stroke: var(--secondaryColor);
+
+    @include tablet {
+        margin-right: 10px;
+    }
+}
+
+.logo-name {
+    display: none;
+
+    @include tablet {
+        display: block;
+        color: var(--secondaryColor);
+        font-weight: 500;
+    
+        font-size: 30px;
+        line-height: 1.17;
+    }
+}
+
+.logo-container>a {
+    display: flex;
+    align-items: center;
+
+    @include tablet {
+        display: flex;
+        justify-content: center;
+        align-items: baseline;
+    }
+}
+
+.nav-list {
+    display: flex;
+}
+
+.nav-list-item {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.17px;
+    font-size: 12px;
+    text-transform: uppercase;
+    color: var(--secondaryColor);
+
+    &:not(:last-child) {
+        margin-right: 32px;
+    }
+}
+
+.header-search-form {
+    display: flex;
+    justify-content: center;
+    padding-bottom: 20px;
+}
+
+.search-form {
+    position: relative;
+
+    @include tablet{
+        position: relative;
+    }
+}
+
+.form-input {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 1.14;
+    color: var(--secondaryColor);
+    width: 280px;
+    position: relative;
+    border-bottom: 0.5px solid var(--secondaryColor);
+
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    outline: 0;
+    background: transparent;
+
+    padding: 10px 10px;
+
+    &:focus-within {
+        border-bottom: 1px solid var(--secondaryAccentColor);
+        box-shadow: 0 0 15px var(--secondaryAccentColor);
+        border-radius: 5px;
+    }
+
+    @include tablet {
+        width: 336px;
+    }
+
+    @include desktop {
+        width: 394px;
+    }
+
+}
+
+.form-input::placeholder {
+    color: var(--headerHoverColor);
+}
+
+.search-btn {
+    stroke: var(--secondaryColor);
+    fill: var(--secondaryColor);
+    position: absolute;
+    width: 22px;
+    height: 22px;
+
+    bottom: 10px;
+    right: 10px;
+    border: none;
+    border-radius: 50%;
+    background: url(#);
+    background-repeat: no-repeat;
+    background-position: center;
+    transform: scale(1);
+    //transition transform
+    &:hover,
+    &:focus {
+        transform: scale(1.2);
+    }
+}
+
+.current {
+    position: relative;
+    display: block;
+
+    &::after {
+        content: '';
+        position: absolute;
+        bottom: -10px;
+        left: 0;
+        transform: translateY(1px);
+        display: block;
+        width: 100%;
+        height: 3px;
+        border: none;
+        background-color: var(--secondaryAccentColor);
+
+        transition: width 0.2s ease-in-out;
+    }
+
+    &:hover::after,
+    &:focus::after {
+        width: 0;
+    }
+}
+
+
+// .input-error {
+//     margin-top: 20px;
+//     display: flex;
+//     justify-content: center;
+//     color: var(--secondaryAccentColor);
+//     font-weight: 400;
+//     font-size: 14px;
+//     line-height: 1.14;
+// }
