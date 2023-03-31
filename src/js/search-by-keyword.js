@@ -1,38 +1,22 @@
-// <form class="search-form" id="search-form">
-//   <input
-//     type="text"
-//     name="searchQuery"
-//     autocomplete="off"
-//     placeholder="Search images..."
-//   />
-//   <button type="submit">Search</button>
-// </form>
-
-// <div id="tui-pagination-container" class="tui-pagination"></div>
-//------------------------------------------------------------------------------------------------
 import axios from 'axios';
-const BASE_URL = 'https://api.themoviedb.org/3';
-const USER_KEY = '9e4f0ad78cbe1148a9d4c0c8389afc83';
-export const prePoster = 'https://image.tmdb.org/t/p/original/';
-export const galleryEl = document.querySelector('.gallery-list');
-
 import 'tui-pagination/dist/tui-pagination.css';
-
-//------------------------------------------------------------------------------------------------
 import Pagination from 'tui-pagination';
 
+const BASE_URL = 'https://api.themoviedb.org/3';
+const USER_KEY = '9e4f0ad78cbe1148a9d4c0c8389afc83';
+const prePoster = 'https://image.tmdb.org/t/p/original/';
+const container = document.getElementById('pagination1');
+
 const refs = {
-  formRef: document.getElementById('search-form'),
+  formRef: document.querySelector('.header-search-form'),
   galleryRef: document.querySelector('.gallery-list'),
 };
 
 refs.formRef.addEventListener('submit', onSubmitBtn);
 
-const container = document.getElementById('tui-pagination-container');
-
 function onSubmitBtn(e) {
   e.preventDefault();
-  const keyWord = e.target.elements.searchQuery.value.trim();
+  const keyWord = e.target.elements.search.value.trim();
 
   getMovie(keyWord).then(data => {
     // Перевіряємо чи масив з фільмами не пустий
@@ -41,7 +25,7 @@ function onSubmitBtn(e) {
       refs.galleryRef.innerHTML = '';
 
       // по data[0] малюєм пагінацію
-      const instance = new Pagination(container, {
+      const instanceFind = new Pagination(container, {
         totalItems: data[0],
         itemsPerPage: 20,
         visiblePages: 5,
@@ -53,7 +37,7 @@ function onSubmitBtn(e) {
       console.log('масив на 1й сторінці', data[1]);
 
       // Вішаємо слухача на пагінацію
-      instance.on('beforeMove', event => {
+      instanceFind.on('beforeMove', event => {
         const currentPage = event.page;
 
         // Робимо запит по тому самому keyWord тільки змінюємо сторінки
@@ -111,23 +95,42 @@ async function getMovie(name, page = 1) {
 }
 
 function galleryMarkup(data) {
-  // item.poster_path === null ? :                <img src="https://image.tmdb.org/t/p/original/${
-  //                 item.poster_path
-  //               }" class = "item-backdrop"/>
   const dataMarkup = data
     .map(item => {
-      return `<li class="gallery-item list" data-id="${item.id}">
-                <img src="https://image.tmdb.org/t/p/original/${
-                  item.poster_path
-                }" class = "item-backdrop"/>
-                <div class="card>
-                  <h2 class="card-title">${item.title}</h2>
-                  <div class="sub-card">
-                    <p class="card-genres">${item.genre_ids.join(', ')}</p>
-                    <p>${item.release_date.slice(0, 4)}</p>
-                  </div>
-                </div>
-              </li>`;
+      return `<li class="film-card" data-id="${item.id}">
+        <a href="" class="film-card_link">
+          <picture class="film-card__img">
+            <source
+              srcset="${prePoster}${item.poster_path}"
+              loading="lazy"
+              media="(min-width: 1280px)"
+            />
+            <source
+              srcset="${prePoster}${item.poster_path}"
+              loading="lazy"
+              media="(min-width: 768px)"
+            />
+            <source
+              srcset="${prePoster}${item.poster_path}"
+              loading="lazy"
+              media="(min-width: 320px)"
+            />
+            <img
+              class="film-card__img film-img"
+              src="${prePoster}${item.poster_path}"
+              alt="Poster for the film"
+              width="395"
+            />
+          </picture>
+          <h3 class="film-card__title">${item.title}</h3>
+          <div class="film-card_info-container">
+            <ul class="film-card__caption">
+              <li class="film-card__genre">${item.genre_ids.join(', ')}</li>
+              <li class="film-card__date">${item.release_date.slice(0, 4)}</li>
+            </ul>
+          </div>
+        </a>
+      </li>`;
     })
     .join('');
 
