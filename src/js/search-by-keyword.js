@@ -6,7 +6,7 @@ const BASE_URL = 'https://api.themoviedb.org/3';
 const USER_KEY = '9e4f0ad78cbe1148a9d4c0c8389afc83';
 const prePoster = 'https://image.tmdb.org/t/p/original/';
 const container = document.getElementById('pagination');
-const noImageURL = new URL('/src/images/no-foto.jpg', import.meta.url);
+export const noImageURL = new URL('/src/images/no-foto.jpg', import.meta.url);
 
 const refs = {
   formRef: document.querySelector('.header-search-form'),
