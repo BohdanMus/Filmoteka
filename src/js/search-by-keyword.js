@@ -5,16 +5,17 @@ import Pagination from 'tui-pagination';
 const BASE_URL = 'https://api.themoviedb.org/3';
 const USER_KEY = '9e4f0ad78cbe1148a9d4c0c8389afc83';
 const prePoster = 'https://image.tmdb.org/t/p/original/';
-const container = document.getElementById('pagination1');
+const container = document.getElementById('pagination');
+const noImageURL = new URL('/src/images/no-foto.jpg', import.meta.url);
 
 const refs = {
   formRef: document.querySelector('.header-search-form'),
   galleryRef: document.querySelector('.gallery-list'),
 };
 
-refs.formRef.addEventListener('submit', onSubmitBtn);
+refs.formRef.addEventListener('submit', onSearchMovieBtnClick);
 
-function onSubmitBtn(e) {
+export function onSearchMovieBtnClick(e) {
   e.preventDefault();
   const keyWord = e.target.elements.search.value.trim();
 
@@ -83,10 +84,10 @@ async function getMovie(name, page = 1) {
       };
     });
 
-    // console.log('мап', updatedMovies);
-    console.log('чистий бекенд', movies.data);
-    console.log('масив з кінами', movieArr);
-    console.log('масив з жанрами', genresArr);
+    // // console.log('мап', updatedMovies);
+    // console.log('чистий бекенд', movies.data);
+    // console.log('масив з кінами', movieArr);
+    // console.log('масив з жанрами', genresArr);
 
     return [movies.data.total_results, updatedMovies];
   } catch (error) {
@@ -100,7 +101,9 @@ function galleryMarkup(data) {
       return `<li class="film-card" data-id="${item.id}">
         <a href="" class="film-card_link">
           <picture class="film-card__img">
-            <source
+          ${
+            item.poster_path
+              ? `<source
               srcset="${prePoster}${item.poster_path}"
               loading="lazy"
               media="(min-width: 1280px)"
@@ -120,7 +123,30 @@ function galleryMarkup(data) {
               src="${prePoster}${item.poster_path}"
               alt="Poster for the film"
               width="395"
+            />`
+              : `            <source
+              srcset="${noImageURL}"
+              loading="lazy"
+              media="(min-width: 1280px)"
             />
+            <source
+              srcset="${noImageURL}"
+              loading="lazy"
+              media="(min-width: 768px)"
+            />
+            <source
+              srcset="${noImageURL}"
+              loading="lazy"
+              media="(min-width: 320px)"
+            />
+            <img
+              class="film-card__img film-img"
+              src="${noImageURL}"
+              alt="Poster for the film"
+              width="395"
+            />`
+          }
+            
           </picture>
           <h3 class="film-card__title">${item.title}</h3>
           <div class="film-card_info-container">
