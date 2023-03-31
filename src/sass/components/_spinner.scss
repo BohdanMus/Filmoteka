@@ -1,0 +1,30 @@
+// body {
+//   background: linear-gradient(to bottom right, magneta, cyan);
+//   display: flex;
+//   height: 100vh;
+//   align-items: center;
+//   justify-content: center;
+// } 
+
+.spinner-container {
+  display: none;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.spinner {
+  height: 120px;
+  width: 120px;
+  border: 6px solid white;
+  border-color: rgb(244, 21, 21) transparent rgb(237, 27, 27) transparent;
+  border-radius: 50%;
+  animation: spin 1.2s ease infinite;
+
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}

@@ -5,9 +5,12 @@
 @import './base/general';
 
 /* Components */
+@import './components/spinner';
 
 /* Layouts*/
 @import './layouts-homepage/gallery';
+@import './components/gallery';
+@import './components/footer';
 
 /* Utils */
 @import './utils/normalize';
