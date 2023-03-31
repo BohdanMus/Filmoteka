@@ -1,0 +1,62 @@
+.library-header{
+    
+    height: 216px;
+    position: relative;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.56);
+    background-image: url(../images/Library/header-lib-mob-1x.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+
+    @include retina {
+        background-image: url(../images/Library/header-lib-mob-2x.jpg);
+    }
+
+    @include tablet {
+        background-image: url(../images/Library/header-lib-tablet-1x.jpg);
+
+        @include retina {
+            background-image: url(../images/Library/header-lib-tablet-2x.jpg);
+        }
+    }
+
+    @include desktop {
+        background-image: url(../images/Library/header-lib-desktop-1x.jpg);
+
+        @include retina {
+            background-image: url(../images/Library/header-lib-desktop-2x.jpg);
+        }
+    }
+}
+.library-container{
+        margin: 0 auto;
+        // text-align: center;
+      
+        @include mobile {
+          max-width: 320px;
+          padding-left: 20px;
+          padding-right: 20px;
+        }
+      
+        @include tablet {
+          max-width: 768px;
+          padding-left: 32px;
+          padding-right: 32px;
+        }
+      
+        @include desktop {
+          max-width: 1280px;
+        }
+   
+}
+.library__filter{
+    text-align: center;
+    @media screen and (min-width: 320px) and (max-width: 767px){
+        display: flex;
+        justify-content: center;
+    }
+}
+
+

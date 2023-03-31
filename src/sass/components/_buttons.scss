@@ -1,0 +1,63 @@
+.filter__button{
+    min-width: 148px;
+    padding-left: 42px;
+    padding-right: 42px;
+    padding-top: 14px;
+    padding-bottom: 14px;
+
+    border: 1px solid #FFFFFF;
+    color: #FFFFFF;
+    border-radius: 5px;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 16px;
+/* or 133% */
+    background-color: transparent;
+    text-transform: uppercase;  
+
+    @include tablet {
+        min-width: 148px;
+        padding-left: 46px;
+        padding-right: 46px;
+        padding-top: 13px;
+        padding-bottom: 13px;
+    }
+
+    @include desktop {
+        min-width: 152px;
+        padding-left: 42px;
+        padding-right: 42px;
+        padding-top: 14px;
+        padding-bottom: 14px;
+    }
+    @include mobile {
+        min-width: 129px;
+        padding-left: 36px;
+        padding-right: 36px;
+        padding-top: 14px;
+        padding-bottom: 14px;
+    }
+}
+
+.filter__item:not(:last-child){
+    margin-right: 16px;
+}
+
+
+.filter__button:hover {
+        background-color: #FF6B01; 
+        color: white;
+        border: 1px solid #FF6B01;
+      }
+.filter__button:focus {
+        background-color: #FF6B01; 
+        color: white;
+        border: 1px solid #FF6B01;
+      }
+.filter__button:active {
+        background-color: #FF6B01; 
+        color: white;
+        border: 1px solid #FF6B01;
+      }
