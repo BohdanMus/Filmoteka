@@ -1,3 +1,14 @@
+// <form class="search-form" id="search-form">
+//   <input
+//     type="text"
+//     name="searchQuery"
+//     autocomplete="off"
+//     placeholder="Search images..."
+//   />
+//   <button type="submit">Search</button>
+// </form>
+
+// <div id="tui-pagination-container" class="tui-pagination"></div>
 //------------------------------------------------------------------------------------------------
 import axios from 'axios';
 const BASE_URL = 'https://api.themoviedb.org/3';
@@ -61,7 +72,7 @@ async function getMovie(name, page = 1) {
     const movieArr = movies.data.results;
     const genresArr = genres.data.genres;
 
-    // перебираємо масив кін, підставляємо в масив з жанрами замість чисел - відповідні їм жанри
+    // перебираємо масив фільмів, підставляємо в масив з жанрами замість чисел - відповідні їм жанри
     const updatedMovies = movieArr.map(movie => {
       const updatedGenreName = movie.genre_ids.map(genreId => {
         const genre = genresArr.find(genre => genre.id === genreId);
@@ -78,9 +89,13 @@ async function getMovie(name, page = 1) {
     console.log('чистий бекенд', movies.data);
     console.log('масив з кінами', movieArr);
     console.log('масив з жанрами', genresArr);
+
+    // Якщо це перший пошук - повертаємо кількість знайдених результатів та оновлений масив в фільмами для 1ї сторінки
     if (page === 1) {
       return [movies.data.total_results, updatedMovies];
-    } else {
+    }
+    // Якщо запит по пагінації - повертаємо тільки масив з фільмами для конкретної сторінки
+    else {
       return updatedMovies;
     }
   } catch (error) {
@@ -91,9 +106,16 @@ async function getMovie(name, page = 1) {
 function galleryMarkup(data) {
   const dataMarkup = data
     .map(item => {
-      return `<div class="photo-card">
-                <img src="https://image.tmdb.org/t/p/original/${item.poster_path}" alt=""/>
-              </div>`;
+      return `<li class="gallery-item list">
+                <img src="https://image.tmdb.org/t/p/original/${item.poster_path}" class = "item-backdrop"/>
+                <div class="card>
+                  <h2 class="card-title">${movieName}</h2>
+                  <div class="sub-card">
+                    <p class="card-genres">${genres}</p>
+                    <p>${date}</p>
+                  </div>
+                </div>
+              </li>`;
     })
     .join('');
 
