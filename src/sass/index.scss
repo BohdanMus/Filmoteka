@@ -2,12 +2,14 @@
 @import './utils/mixins';
 @import './base/container';
 @import './base/reset';
+@import './base/general';
 
 /* Components */
 @import './components/spinner';
 
 /* Layouts*/
 @import './components/header-main';
+@import './layouts-homepage/gallery';
 @import './components/gallery';
 @import './components/footer';
 
