@@ -5,10 +5,10 @@ const PARAMETERS_TRENDING = '/trending/all/day';
 export const prePoster = 'https://image.tmdb.org/t/p/original/';
 export const galleryEl = document.querySelector('.gallery-list');
 
-export async function fetchMovies() {
+export async function fetchMovies(page) {
   try {
     const { data } = await axios.get(
-      `${BASE_URL}${PARAMETERS_TRENDING}?api_key=${USER_KEY}`
+      `${BASE_URL}${PARAMETERS_TRENDING}?api_key=${USER_KEY}&page=${page}`
     );
     return data;
   } catch (error) {
