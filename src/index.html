@@ -28,8 +28,22 @@
     <main>
       <!-- ❗️❗️❗️ Add partials like so for every page -->
       <!-- <include src="./partials/example.html"></include> -->
+      <!--Форма дял пошуку Степана, використовується за відсутності такої в хедері  -->
+      <form class="search-form" id="search-form">
+        <input
+          type="text"
+          name="searchQuery"
+          autocomplete="off"
+          placeholder="Search movies..."
+        />
+        <button type="submit">Search</button>
+      </form>
+      <!--Форма дял пошуку Степана, використовується за відсутності такої в хедері  -->
       <include src="./partials/gallery.html"></include>
       <include src="./partials/spinner.html"></include>
+      <!--Пагінація  -->
+      <div id="tui-pagination-container" class="tui-pagination"></div>
+      <!--Пагінація  -->
     </main>
 
     <footer>
@@ -41,5 +55,9 @@
 
     <!-- Підключення скриптів -->
     <script type="module" src="./index.js"></script>
+
+    <!-- Скрипт Степана, тестова версія -->
+    <script type="module" src="./js/search-by-keyword.js"></script>
+    <!-- Скрипт Степана, тестова версія -->
   </body>
 </html>
