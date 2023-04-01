@@ -1,5 +1,5 @@
 .footer__backdrop {
-  display: none;
+  display: block;
   position: fixed;
   z-index: 1;
   left: 0;
@@ -21,7 +21,7 @@
 
 .close {
   color: rgb(195, 61, 61);
-  float: right;
+  // float: right;
   font-size: 30px;
   font-weight: bold;
 }
@@ -147,12 +147,12 @@
     box-shadow: inset -1px -1px 3px white, inset 1px 1px 3px rgba(0, 0, 0, 0.1);
   }
 
-  &:hover>.sns-list__icon {
+  &:hover > .sns-list__icon {
     fill: var(--mainAccentColor);
     transform: scale(0.8);
   }
 
-  &:active>.sns-list__icon {
+  &:active > .sns-list__icon {
     fill: var(--mainAccentColor);
   }
 
@@ -160,7 +160,7 @@
     box-shadow: inset -1px -1px 3px white, inset 1px 1px 3px rgba(0, 0, 0, 0.1);
   }
 
-  &:hover>.sns-list__icon {
+  &:hover > .sns-list__icon {
     fill: var(--mainAccentColor);
   }
 }
