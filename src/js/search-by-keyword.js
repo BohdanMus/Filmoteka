@@ -35,7 +35,7 @@ export function onSearchMovieBtnClick(e) {
       // по data[1] малюєм картку
       refs.galleryRef.insertAdjacentHTML('beforeend', galleryMarkup(data[1]));
 
-      console.log('масив на 1й сторінці', data[1]);
+      // console.log('масив на 1й сторінці', data[1]);
 
       // Вішаємо слухача на пагінацію
       instanceFind.on('beforeMove', event => {
