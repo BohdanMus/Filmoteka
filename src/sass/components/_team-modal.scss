@@ -1,0 +1,252 @@
+.footer__backdrop {
+  display: block;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(36, 29, 29, 0.4);
+}
+
+.footer__modal {
+  background-color: #555050;
+  margin: 0 auto;
+  padding: 1px;
+  border: 1px solid rgb(141, 65, 65);
+  border-radius: 20px;
+  width: 70%;
+  position: relative;
+}
+
+.close {
+    width: 30px;
+    height: 30px;
+    background-color: transparent;
+    border: 2px solid rgba(236, 114, 8, 0.1);
+    border-radius: 50%;
+    margin-left: 10px;
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    // transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.close:hover,
+.close:focus {
+  color: rgb(238, 9, 9);
+  border-color: rgb(238, 9, 9);;
+  text-decoration: none;
+  cursor: pointer;
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.team {
+  color: rgb(219, 93, 93);
+}
+
+.team__list {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.team__item {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px;
+
+  background-color: transparent;
+  box-shadow: inset 2px 2px 5px #f0700e, inset -5px -5px 10px rgb(239, 7, 7);
+}
+//   @include tablet {
+//     width: 100%;
+//     flex-basis: calc((100% - 1 * 32px) / 2);
+//     margin-right: 32px;
+//     margin-bottom: 32px;
+
+//     &:not(:last-child) {
+//       margin-bottom: 32px;
+//       margin-right: 32px;
+//     }
+
+//     &:nth-child(2n) {
+//       margin-right: 0;
+//     }
+
+//     &:last-child {
+//       margin-right: auto;
+//       margin-bottom: 0px;
+//     }
+
+//     &:nth-last-child(-n + 2) {
+//       margin-bottom: 0;
+//     }
+//   }
+
+//   @include desktop {
+//     flex-basis: calc((100% - 3 * 16px) / 4);
+//     margin-right: 16px;
+//     margin-bottom: 32px;
+
+//     &:nth-child(4n) {
+//       margin-right: 0;
+//     }
+
+//     &:last-child {
+//       margin-right: auto;
+//       margin-bottom: 0px;
+//     }
+
+//     &:nth-last-child(-n + 4) {
+//       margin-bottom: 0;
+//     }
+//   }
+
+//   transition-property: scale;
+//   transition-duration: 500ms;
+//   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+
+//   &:hover,
+//   &:active,
+//   &:focus {
+//     scale: 1.03;
+//     box-shadow: inset 1px 1px 2px #babecc, inset -1px -1px 2px #fff;
+//   }
+// }
+
+.team__wrapper {
+  display: flex;
+  align-items: center;
+}
+
+.sns-list {
+  margin-right: 10px;
+  margin-left: auto;
+}
+
+.sns-list__item {
+  display: block;
+  margin: 0 auto;
+}
+
+.sns-list__link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  margin-bottom: 10px;
+  margin-left: 10px;
+  border: none;
+  outline: none;
+
+  width: 100%;
+  cursor: pointer;
+
+  width: 24px;
+  height: 24px;
+  border-radius: 20px;
+  background-color: transparent;
+}
+
+//   &:hover {
+//     box-shadow: inset -1px -1px 3px white, inset 1px 1px 3px rgba(0, 0, 0, 0.1);
+//   }
+
+//   &:hover > .sns-list__icon {
+//     fill: var(--mainAccentColor);
+//     transform: scale(0.8);
+//   }
+
+//   &:active > .sns-list__icon {
+//     fill: var(--mainAccentColor);
+//   }
+
+//   &:active {
+//     box-shadow: inset -1px -1px 3px white, inset 1px 1px 3px rgba(0, 0, 0, 0.1);
+//   }
+
+//   &:hover > .sns-list__icon {
+//     fill: var(--mainAccentColor);
+//   }
+// }
+
+.team {
+  position: relative;
+  margin-bottom: 20px;
+  text-align: center;
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 2.5rem;
+  letter-spacing: 10px;
+  color: #060607;
+  text-shadow: 1px 4px 6px #e77f09, 1px -2px 2px rgb(223, 5, 5);
+  // animation: text 2500ms linear alternate 2500ms;
+}
+
+@keyframes text {
+  0% {
+    color: var(--mainAccentColor);
+    margin-bottom: 10px;
+  }
+
+  30% {
+    letter-spacing: 25px;
+    margin-bottom: 10px;
+  }
+
+  85% {
+    letter-spacing: 10px;
+    margin-bottom: 10px;
+  }
+} 
+
+.team__student-photo--wrap {
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.team__foto-thumb {
+  margin-bottom: 0;
+  width: 150px;
+  height: 150px;
+  border-radius: 20%;
+  overflow: hidden;
+}
+
+.team__student-foto {
+  width: 100%;
+  height: 100%;
+  margin-bottom: 0;
+  object-fit: cover;
+  object-position: top;
+}
+
+.team__student-card {
+  padding: 20px;
+  font-size: 14px;
+}
+
+.team__student-name {
+  margin-bottom: 10px;
+  color: var(--mainAccentColor);
+  letter-spacing: 2px;
+  font-size: 15px;
+  text-shadow: 0.5px 0.5px 1px rgb(53, 53, 53);
+}
+
+.team__student-role {
+  margin-bottom: 10px;
+  font-weight: 700;
+  font-size: 15px;
+  color: rgb(219, 93, 93);
+  /* text-shadow: 0.5px 0.5px 1px rgb(255, 255, 255); */
+}
+
+.noScroll {
+  overflow: hidden;
+}
