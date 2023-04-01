@@ -1,0 +1,195 @@
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.25);
+  overflow: auto;
+}
+
+// .backdrop.is-hidden {
+//     opacity: 0;
+//     pointer-events: none;
+// }
+
+.modal-images {
+  position: relative;
+  width: calc(100% - 40px);
+
+  // z-index: 9999;
+  width: 100%;
+  height: auto;
+  background-color: #fff;
+  overflow: auto;
+
+  @include mobile {
+    width: calc(100% - 40px);
+    margin: 0 auto;
+  }
+
+  @include tablet {
+    position: absolute;
+    display: flex;
+    width: calc(100% - 64px);
+    left: 32px;
+    top: 219px;
+  }
+
+  @include desktop {
+    display: flex;
+    width: calc(100% - 410px);
+    top: 250px;
+    left: 205px;
+  }
+}
+
+.modal-content {
+  display: block;
+  width: 100%;
+
+  @include mobile {
+    padding: 48px 20px 0;
+    margin-bottom: 20px;
+  }
+  @include tablet {
+    padding: 40px 0 0 36px;
+    margin-right: 68px;
+  }
+}
+
+.close-icon-container {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 18px;
+}
+
+.modal-title {
+  //   margin-top: 30px;
+  margin-bottom: 20px;
+  font-size: 20px;
+  line-height: 23px;
+
+  @include desktop {
+    font-size: 30px;
+  }
+}
+
+.rating-vote {
+  background-color: var(--accent-color);
+  color: var(--white-text-color);
+  padding-left: 5px;
+  padding-right: 5px;
+  border-radius: 5px;
+  margin-right: 3px;
+
+  //   width: 36px;
+}
+
+.rating-votes {
+  background-color: var(--grey-100);
+  padding-left: 5px;
+  padding-right: 5px;
+  border-radius: 5px;
+}
+
+.text-content {
+  color: var(--primary-text-color);
+  font-weight: 500;
+  font-size: 12px;
+  margin-bottom: 21px;
+}
+
+.description-film {
+  color: #8c8c8c;
+  font-size: 12px;
+  width: 50%;
+
+  @include tablet {
+    width: 50%;
+    padding-bottom: 10px;
+  }
+
+  @include desktop {
+    width: 58%;
+  }
+}
+.description-film-info {
+  font-size: 12px;
+  font-weight: 500;
+
+  @include tablet {
+    padding-bottom: 10px;
+  }
+}
+
+.about-film {
+  font-size: 12px;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  font-weight: 500;
+}
+
+.img-film {
+  margin-bottom: 30px;
+  @include tablet {
+    height: 374px;
+    width: 264px;
+    margin-right: 32px;
+  }
+
+  @include desktop {
+    height: 477px;
+    width: 396px;
+  }
+  margin-right: 30px;
+}
+
+.btn-card {
+  justify-content: center;
+  display: flex;
+
+  @include desktop {
+    display: inline-flex;
+  }
+}
+
+.watched-btn {
+  width: 112px;
+  height: 44px;
+  margin-right: 15px;
+  color: var(--white-text-color);
+  background-color: var(--accent-color);
+  font-weight: 500;
+  border-radius: 5px;
+  font-size: 12px;
+
+  @include tablet {
+    width: 125px;
+    height: 44px;
+  }
+
+  @include desktop {
+    width: 136px;
+    height: 44px;
+  }
+}
+
+.queue-btn {
+  width: 112px;
+  height: 44px;
+  background: var(--white-text-color);
+  border-radius: 5px;
+  font-weight: 500;
+  font-size: 12px;
+
+  @include tablet {
+    width: 125px;
+    height: 44px;
+  }
+
+  @include desktop {
+    width: 136px;
+    height: 44px;
+  }
+}
