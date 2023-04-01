@@ -48,7 +48,7 @@ export function onSearchMovieBtnClick(e) {
             'beforeend',
             galleryMarkup(data[1])
           );
-          console.log('масив на вибраній сторінці', data[1]);
+          // console.log('масив на вибраній сторінці', data[1]);
         });
       });
     }
@@ -150,8 +150,21 @@ function galleryMarkup(data) {
           <h3 class="film-card__title">${item.title}</h3>
           <div class="film-card_info-container">
             <ul class="film-card__caption">
-              <li class="film-card__genre">${item.genre_ids.join(', ')}</li>
-              <li class="film-card__date">${item.release_date.slice(0, 4)}</li>
+            ${
+              item.genre_ids.length === 0
+                ? `<li class="film-card__genre">Genre Unavailable</li>`
+                : `<li class="film-card__genre">${item.genre_ids.join(
+                    ', '
+                  )}</li>`
+            }
+            ${
+              item.release_date
+                ? `<li class="film-card__date">${item.release_date.slice(
+                    0,
+                    4
+                  )}</li>`
+                : `<li class="film-card__genre">Date Unavailable</li>`
+            }
             </ul>
           </div>
       </li>`;
