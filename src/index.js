@@ -6,6 +6,7 @@ import { onSearchMovieBtnClick } from './js/search-by-keyword';
 import './js/scroll-up-btn';
 import './js/open-modal';
 import { onOpenModalTeamClick } from './js/team-modal';
+import './js/youtube-trailer';
 
 const refs = {
   formRef: document.querySelector('.header-search-form'),
