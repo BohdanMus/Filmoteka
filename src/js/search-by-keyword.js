@@ -99,7 +99,6 @@ function galleryMarkup(data) {
   const dataMarkup = data
     .map(item => {
       return `<li class="film-card" data-id="${item.id}">
-        <a href="" class="film-card_link">
           <picture class="film-card__img">
           ${
             item.poster_path
@@ -155,7 +154,6 @@ function galleryMarkup(data) {
               <li class="film-card__date">${item.release_date.slice(0, 4)}</li>
             </ul>
           </div>
-        </a>
       </li>`;
     })
     .join('');

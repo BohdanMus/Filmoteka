@@ -22,7 +22,6 @@ export async function galleryRender(page) {
           : first_air_date.slice(0, 4);
         const genres = getGenres(genre_ids);
         return `<li class="film-card" data-id="${id}">
-        <a href="" class="film-card_link">
           <picture class="film-card__img">
           ${
             poster_path
@@ -78,7 +77,6 @@ export async function galleryRender(page) {
               <li class="film-card__date">${date}</li>
             </ul>
           </div>
-        </a>
       </li>`;
       }
     )
