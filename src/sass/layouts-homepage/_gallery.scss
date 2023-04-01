@@ -7,7 +7,8 @@
   }
 }
 
-.gallery-list {
+.gallery-list,
+.library-list {
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
@@ -100,5 +101,9 @@
   width: 1.5px;
   height: 16px;
   margin-right: 10px;
+  background-color: #ff6b08;
+}
+
+button.current {
   background-color: #ff6b08;
 }
