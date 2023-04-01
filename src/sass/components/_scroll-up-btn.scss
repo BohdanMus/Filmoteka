@@ -1,0 +1,74 @@
+.scroll-up-btn {
+  display: none;
+  position: fixed;
+  width: 40px;
+  height: 40px;
+  right: 30px;
+  bottom: 92px;
+  border-radius: 40%;
+  z-index: 1;
+
+  background-color: rgb(245, 161, 5);
+  color: black;
+  box-shadow: 13px 13px 21px -1px rgba(0, 0, 0, 0.58);
+  -webkit-box-shadow: 13px 13px 21px -1px rgba(0, 0, 0, 0.58);
+  -moz-box-shadow: 13px 13px 21px -1px rgba(0, 0, 0, 0.58);
+
+  transition: color 1500ms ease-in-out;
+
+
+  &:hover {
+    background-color: black;
+
+    .scroll-up-btn__text {
+      color: orange;
+    }
+
+    box-shadow: 13px 13px 21px -1px rgba(0, 0, 0, 0.58);
+    -webkit-box-shadow: 13px 13px 21px -1px rgba(0, 0, 0, 0.58);
+    -moz-box-shadow: 13px 13px 21px -1px rgba(0, 0, 0, 0.58);
+  }
+
+  &:active {
+    .scroll-up-btn__text {
+      color: var(--mainAccentColor);
+    }
+
+    transform: translateY(-1px);
+    box-shadow: 6px 9px 22px -1px rgba(0, 0, 0, 0.79);
+    -webkit-box-shadow: 6px 9px 22px -1px rgba(0, 0, 0, 0.79);
+    -moz-box-shadow: 6px 9px 22px -1px rgba(0, 0, 0, 0.79);
+  }
+
+    @include tablet {
+    width: 50px;
+    height: 50px;
+    right: 45px;
+    bottom: 139px;
+  }
+
+     @include desktop {
+    width: 60px;
+    height: 60px;
+    right: 45px;
+    bottom: 137px;
+  }
+}
+
+
+.scroll-up-btn__text {
+  font-weight: 500;
+  font-size: 16px;
+
+  @include tablet {
+    font-size: 18px;
+  }
+
+    @include desktop {
+    font-size: 22px;
+  }
+}
+
+.go-up-show {
+  display: block;
+}
