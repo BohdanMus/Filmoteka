@@ -12,4 +12,3 @@ const refs = {
 galleryRender(page);
 
 refs.formRef.addEventListener('submit', onSearchMovieBtnClick);
-
