@@ -1,4 +1,5 @@
 import { onOpenModal } from './open-modal';
+import './open-modal';
 
 const refs = {
   queueBtn: document.querySelector('.button-queue'),
