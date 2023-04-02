@@ -2,13 +2,22 @@
 @import './utils/mixins';
 @import './base/container';
 @import './base/reset';
+@import './base/general';
 
 /* Components */
+@import './components/spinner';
+@import './components/scroll-up-btn';
 
 /* Layouts*/
-
+@import './components/header-main';
+@import './components/header-library';
+@import './layouts-homepage/gallery';
+@import './components/gallery';
 @import './components/footer';
+
 @import './components/modalfilm';
+
+@import './components/team-modal';
 
 /* Utils */
 @import './utils/normalize';
