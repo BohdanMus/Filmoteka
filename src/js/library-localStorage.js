@@ -1,4 +1,4 @@
-// import { onOpenModal } from './open-modal';
+import { onOpenModal } from './open-modal';
 
 const refs = {
   queueBtn: document.querySelector('.button-queue'),
@@ -54,7 +54,7 @@ function createQueueList() {
         No movies added. Select a movie on the
         <a href="../index.html" class="homepage">Home</a> page
       </p>
-      <img class="film-img" src="/src/images/projector.jpg" alt="" />
+      <img class="film-img" src="${allertImageURL}" alt="" />
     </div>
     `;
     return;
