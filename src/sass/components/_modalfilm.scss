@@ -1,195 +1,191 @@
-.backdrop {
+.modal {
+  padding: 48px 20px 40px 20px;
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background-color: rgba(0, 0, 0, 0.25);
+
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(1);
+  transition: transform 250ms linear;
+  width: 280px;
   overflow: auto;
-}
-
-// .backdrop.is-hidden {
-//     opacity: 0;
-//     pointer-events: none;
-// }
-
-.modal-images {
-  position: relative;
-  width: calc(100% - 40px);
-
-  // z-index: 9999;
-  width: 100%;
-  height: auto;
-  background-color: #fff;
-  overflow: auto;
-
-  @include mobile {
-    width: calc(100% - 40px);
-    margin: 0 auto;
-  }
-
+  background-color: var(--secondaryColor);
   @include tablet {
-    position: absolute;
+    padding: 40px 72px 40px 36px;
     display: flex;
-    width: calc(100% - 64px);
-    left: 32px;
-    top: 219px;
+    gap: 68px;
+    width: 704px;
+    height: 552px;
   }
-
   @include desktop {
+    padding: 40px 12px;
     display: flex;
-    width: calc(100% - 410px);
-    top: 250px;
-    left: 205px;
+    gap: 16px;
+    width: 806px;
+    height: 558px;
   }
 }
-
-.modal-content {
-  display: block;
-  width: 100%;
-
-  @include mobile {
-    padding: 48px 20px 0;
-    margin-bottom: 20px;
-  }
-  @include tablet {
-    padding: 40px 0 0 36px;
-    margin-right: 68px;
-  }
-}
-
-.close-icon-container {
+.modal-close {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 8px;
   display: flex;
-  justify-content: flex-end;
-  margin-bottom: 18px;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  z-index: 10;
+  background-color: transparent;
+  border: none;
+}
+
+.modal-poster {
+  display: block;
+
+  margin-bottom: 20px;
+  @include tablet {
+  }
+}
+.img-film {
+  object-fit: cover;
+  width: 240px;
+  height: 357px;
+
+  margin-bottom: 20px;
+  @include tablet {
+    margin-bottom: 0px;
+    width: 264px;
+    height: 374px;
+  }
+  @include desktop {
+    width: 375px;
+    height: 478px;
+  }
+}
+
+.modal-description {
+  width: 240px;
+  @include tablet {
+    width: 264px;
+  }
+  @include desktop {
+    width: 391px;
+  }
 }
 
 .modal-title {
-  //   margin-top: 30px;
   margin-bottom: 20px;
   font-size: 20px;
-  line-height: 23px;
-
+  line-height: 1.15;
   @include desktop {
     font-size: 30px;
   }
 }
 
-.rating-vote {
-  background-color: var(--accent-color);
-  color: var(--white-text-color);
-  padding-left: 5px;
-  padding-right: 5px;
-  border-radius: 5px;
-  margin-right: 3px;
-
-  //   width: 36px;
+.data-wrapper {
+  display: flex;
+  margin-bottom: 20px;
 }
-
-.rating-votes {
-  background-color: var(--grey-100);
-  padding-left: 5px;
-  padding-right: 5px;
-  border-radius: 5px;
-}
-
-.text-content {
-  color: var(--primary-text-color);
-  font-weight: 500;
-  font-size: 12px;
-  margin-bottom: 21px;
-}
-
-.description-film {
+.data-keys {
+  width: 129px;
   color: #8c8c8c;
   font-size: 12px;
   width: 50%;
-
-  @include tablet {
-    width: 50%;
-    padding-bottom: 10px;
-  }
-
-  @include desktop {
-    width: 58%;
-  }
 }
-.description-film-info {
-  font-size: 12px;
+.data-values {
+  width: 151px;
+  color: var(--primary-text-color);
   font-weight: 500;
-
-  @include tablet {
-    padding-bottom: 10px;
-  }
+  font-size: 12px;
+}
+.keys-item:not(:last-child),
+.value-item:not(:last-child) {
+  margin-bottom: 8px;
+}
+.rating {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: nowrap;
+  padding: 1px 9px;
+  background: var(--btnAccentColor);
+  border-radius: 5px;
+  color: var(--secondaryColor);
+  line-height: 1.17;
 }
 
 .about-film {
   font-size: 12px;
-  margin-top: 20px;
-  margin-bottom: 10px;
+  margin-bottom: 8px;
   font-weight: 500;
 }
-
-.img-film {
-  margin-bottom: 30px;
-  @include tablet {
-    height: 374px;
-    width: 264px;
-    margin-right: 32px;
-  }
-
-  @include desktop {
-    height: 477px;
-    width: 396px;
-  }
-  margin-right: 30px;
+.description-film-info {
+  margin-bottom: 20px;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.67;
 }
 
-.btn-card {
-  justify-content: center;
+.btn-block {
   display: flex;
-
+  gap: 20px;
+  justify-content: center;
+  @include tablet {
+    gap: 15px;
+  }
   @include desktop {
-    display: inline-flex;
+    justify-content: left;
+    margin-left: 8px;
+  }
+}
+.modal-button {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 110px;
+  height: 44px;
+  padding: 6px;
+  border-radius: 5px;
+  border: 2px solid var(--primary-text-color);
+  text-transform: uppercase;
+  background-color: transparent;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.33;
+  transform: scale(1);
+  transition-property: background-color;
+  transition-duration: 250ms;
+  transition-timing-function: linear;
+  @include tablet {
+    width: 125px;
+  }
+  @include desktop {
+    width: 136px;
+  }
+  &:hover,
+  &:focus {
+    border: none;
+    background-color: var(--btnAccentColor);
+    color: var(--secondaryColor);
+    transform: scale(1.1);
+  }
+  &:disabled {
+    border: none;
+    background-color: var(--btnAccentColor);
+    color: var(--secondaryColor);
+    opacity: 0.6;
+    transform: scale(1);
   }
 }
 
-.watched-btn {
-  width: 112px;
-  height: 44px;
-  margin-right: 15px;
-  color: var(--white-text-color);
-  background-color: var(--accent-color);
-  font-weight: 500;
-  border-radius: 5px;
-  font-size: 12px;
-
-  @include tablet {
-    width: 125px;
-    height: 44px;
-  }
-
-  @include desktop {
-    width: 136px;
-    height: 44px;
-  }
-}
-
-.queue-btn {
-  width: 112px;
-  height: 44px;
-  background: var(--white-text-color);
-  border-radius: 5px;
-  font-weight: 500;
-  font-size: 12px;
-
-  @include tablet {
-    width: 125px;
-    height: 44px;
-  }
-
-  @include desktop {
-    width: 136px;
-    height: 44px;
-  }
+.visually-hidden {
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  border: 0;
+  padding: 0;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  margin: -1px;
 }
