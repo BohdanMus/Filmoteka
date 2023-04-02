@@ -6,7 +6,7 @@ const gallery = document.querySelector('.gallery-list');
 const createListCard = document.querySelector('.card');
 gallery.addEventListener('click', onOpenModal);
 
-function onOpenModal(event) {
+export function onOpenModal(event) {
   event.preventDefault();
 
   if (event.currentTarget === event.target) {
@@ -85,6 +85,7 @@ function onOpenModal(event) {
     </p>`;
     createListCard.insertAdjacentHTML('beforeend', markup);
   }
+
 
   // window.addEventListener('keydown', onCloseModal);
   // function onCloseModal(event) {
