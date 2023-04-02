@@ -1,34 +1,41 @@
 <header class="header">
-    <div class="container">
-        <div class="header-container">
-            <div class="logo-container">
-                <a href="./index.html" class="logo-film">
-                    <svg class="logo" width="24" height="24">
-                        <use class="logo-icon" href="#"></use>
-                    </svg>
-                    <span class="logo-name">Filmoteka</span>
-                </a>
-            </div>
+  <div class="container">
+    <div class="header-container">
+      <div class="logo-container">
+        <a href="./index.html" class="logo-film">
+          <svg class="logo" width="24" height="24">
+            <use class="logo-icon" href=".//images/icons.svg#icon-film"></use>
+          </svg>
+          <span class="logo-name">Filmoteka</span>
+        </a>
+      </div>
 
-            <nav class="header-nav">
-                <ul class="nav-list">
-                    <li class="nav-list-item">
-                        <a class="nav-list-link current" href="./index.html">Home</a>
-                    </li>
-                    <li class="nav-list-item">
-                        <a class="nav-list-link" href="./library.html">My Library</a>
-                    </li>
-                </ul>
-            </nav>
-        </div>
-        <form class="header-search-form">
-            <div class="search-form">
-                <input type="text" name="search" class="form-input" placeholder="Movie search" />
-                <button type="submit" class="search-btn">
-                    <span class="search-icon"></span>
-                </button>
-                <!-- <span class="input-error">Search result not successful. Enter the correct movie name and</span> -->
-            </div>
-        </form>
+      <nav class="header-nav">
+        <ul class="nav-list">
+          <li class="nav-list-item">
+            <a class="nav-list-link current" href="./index.html">Home</a>
+          </li>
+          <li class="nav-list-item">
+            <a class="nav-list-link" href="./library.html">My Library</a>
+          </li>
+        </ul>
+      </nav>
     </div>
+    <form class="header-search-form">
+      <div class="search-form">
+        <input
+          type="text"
+          name="search"
+          class="form-input"
+          placeholder="Movie search"
+        />
+        <button type="submit" class="search-btn">
+          <span class="search-icon"></span>
+        </button>
+      </div>
+    </form>
+    <span class="input-error"
+      >Search result not successful. Enter the correct movie name.</span
+    >
+  </div>
 </header>
