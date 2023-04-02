@@ -2,7 +2,6 @@ import axios from 'axios';
 
 const BASE_URL = 'https://api.themoviedb.org/3';
 const USER_KEY = '9e4f0ad78cbe1148a9d4c0c8389afc83';
-const movieId = '677179';
 let trailerKey = '';
 
 const trailerButton = document.querySelector('.trailer');
@@ -10,16 +9,17 @@ const trailerContainer = document.querySelector('.trailer-container');
 
 trailerButton.addEventListener('click', getMovieTrailer);
 
-async function getMovieTrailer() {
+async function getMovieTrailer(movieId) {
   try {
     const response = await axios.get(
       `${BASE_URL}/movie/${movieId}/videos?api_key=${USER_KEY}`
     );
-
+    movieId = response.data.id;
     const videos = response.data.results;
-    // console.log(videos);
+    console.log(videos);
     trailerKey = videos.find(video => video.type === 'Trailer')?.key;
     renderVideoFrame();
+    return response;
   } catch (error) {
     console.error(error);
   }
