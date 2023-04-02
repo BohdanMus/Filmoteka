@@ -1,6 +1,5 @@
 .container {
   margin: 0 auto;
-  // text-align: center;
 
   @include mobile {
     max-width: 320px;
