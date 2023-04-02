@@ -104,7 +104,7 @@
 .header-search-form {
     display: flex;
     justify-content: center;
-    padding-bottom: 20px;
+    
 }
 
 .search-form {
@@ -163,11 +163,11 @@
     right: 10px;
     border: none;
     border-radius: 50%;
-    background: url(#);
+    background: url(../images/search.svg);
     background-repeat: no-repeat;
     background-position: center;
     transform: scale(1);
-    //transition transform
+    transition: transfrom 250ms cubic-bezier(0.4, 0, 0.2, 1);
     &:hover,
     &:focus {
         transform: scale(1.2);
@@ -200,12 +200,12 @@
 }
 
 
-// .input-error {
-//     margin-top: 20px;
-//     display: flex;
-//     justify-content: center;
-//     color: var(--secondaryAccentColor);
-//     font-weight: 400;
-//     font-size: 14px;
-//     line-height: 1.14;
-// }
+.input-error {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+    color: var(--secondaryAccentColor);
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 1.14;
+}

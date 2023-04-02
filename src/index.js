@@ -5,6 +5,7 @@ import { showSpinner, hideSpinner } from './js/spinner';
 import { onSearchMovieBtnClick } from './js/search-by-keyword';
 import './js/scroll-up-btn';
 import './js/open-modal';
+import './js/modal-close'
 import { onOpenModalTeamClick } from './js/team-modal';
 
 const refs = {
