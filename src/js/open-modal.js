@@ -16,7 +16,7 @@ function onOpenModal(event) {
   
   const getMovie = async () => {
       const { data } = await axios.get(
-        `${BASE_URL}/movie/${listId}?api_key=${USER_KEY}&language=en-US`
+        `${BASE_URL}/movie/${listId}?api_key=${USER_KEY}`
       );
       return data;
   };

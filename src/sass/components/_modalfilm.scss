@@ -1,0 +1,191 @@
+.modal {
+  padding: 48px 20px 40px 20px;
+  position: fixed;
+
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(1);
+  transition: transform 250ms linear;
+  width: 280px;
+  overflow: auto;
+  background-color: var(--secondaryColor);
+  @include tablet {
+    padding: 40px 72px 40px 36px;
+    display: flex;
+    gap: 68px;
+    width: 704px;
+    height: 552px;
+  }
+  @include desktop {
+    padding: 40px 12px;
+    display: flex;
+    gap: 16px;
+    width: 806px;
+    height: 558px;
+  }
+}
+.modal-close {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  z-index: 10;
+  background-color: transparent;
+  border: none;
+}
+
+.modal-poster {
+  display: block;
+
+  margin-bottom: 20px;
+  @include tablet {
+  }
+}
+.img-film {
+  object-fit: cover;
+  width: 240px;
+  height: 357px;
+
+  margin-bottom: 20px;
+  @include tablet {
+    margin-bottom: 0px;
+    width: 264px;
+    height: 374px;
+  }
+  @include desktop {
+    width: 375px;
+    height: 478px;
+  }
+}
+
+.modal-description {
+  width: 240px;
+  @include tablet {
+    width: 264px;
+  }
+  @include desktop {
+    width: 391px;
+  }
+}
+
+.modal-title {
+  margin-bottom: 20px;
+  font-size: 20px;
+  line-height: 1.15;
+  @include desktop {
+    font-size: 30px;
+  }
+}
+
+.data-wrapper {
+  display: flex;
+  margin-bottom: 20px;
+}
+.data-keys {
+  width: 129px;
+  color: #8c8c8c;
+  font-size: 12px;
+  width: 50%;
+}
+.data-values {
+  width: 151px;
+  color: var(--primary-text-color);
+  font-weight: 500;
+  font-size: 12px;
+}
+.keys-item:not(:last-child),
+.value-item:not(:last-child) {
+  margin-bottom: 8px;
+}
+.rating {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: nowrap;
+  padding: 1px 9px;
+  background: var(--btnAccentColor);
+  border-radius: 5px;
+  color: var(--secondaryColor);
+  line-height: 1.17;
+}
+
+.about-film {
+  font-size: 12px;
+  margin-bottom: 8px;
+  font-weight: 500;
+}
+.description-film-info {
+  margin-bottom: 20px;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.67;
+}
+
+.btn-block {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  @include tablet {
+    gap: 15px;
+  }
+  @include desktop {
+    justify-content: left;
+    margin-left: 8px;
+  }
+}
+.modal-button {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 110px;
+  height: 44px;
+  padding: 6px;
+  border-radius: 5px;
+  border: 2px solid var(--primary-text-color);
+  text-transform: uppercase;
+  background-color: transparent;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.33;
+  transform: scale(1);
+  transition-property: background-color;
+  transition-duration: 250ms;
+  transition-timing-function: linear;
+  @include tablet {
+    width: 125px;
+  }
+  @include desktop {
+    width: 136px;
+  }
+  &:hover,
+  &:focus {
+    border: none;
+    background-color: var(--btnAccentColor);
+    color: var(--secondaryColor);
+    transform: scale(1.1);
+  }
+  &:disabled {
+    border: none;
+    background-color: var(--btnAccentColor);
+    color: var(--secondaryColor);
+    opacity: 0.6;
+    transform: scale(1);
+  }
+}
+
+.visually-hidden {
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  border: 0;
+  padding: 0;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  margin: -1px;
+}

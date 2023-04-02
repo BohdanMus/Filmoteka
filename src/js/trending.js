@@ -72,10 +72,10 @@ export async function galleryRender(page) {
           </picture>
           <h3 class="film-card__title">${movieName}</h3>
           <div class="film-card_info-container">
-            <ul class="film-card__caption">
-              <li class="film-card__genre">${genres}</li>
-              <li class="film-card__date">${date}</li>
-            </ul>
+            <div class="film-card__caption">
+              <p class="film-card__genre">${genres}</p>
+              <p class="film-card__date">${date}</p>
+            </div>
           </div>
       </li>`;
       }
