@@ -10,7 +10,7 @@ export function onClick(event) {
     return;
   }
   const parent = event.target.closest('li');
-  console.log(parent.dataset.id);
-  console.log(fetchResult);
+  // console.log(parent.dataset.id);
+  // console.log(fetchResult);
   return parent.dataset.id;
 }
