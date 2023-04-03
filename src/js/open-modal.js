@@ -20,8 +20,8 @@ function onModalClose() {
   modalContentEl.innerHTML = '';
   markup = '';
 }
-
-function onOpenModal(event) {
+const createListCard = document.querySelector('.card');
+export function onOpenModal(event) {
   let movieArray = [];
   event.preventDefault();
   if (event.currentTarget === event.target) {
@@ -115,19 +115,8 @@ function movieModalRender(movieArray, listId) {
     </div>
   </div>`;
   modalContentEl.insertAdjacentHTML('afterbegin', markup);
-
   const closeBtnEl = document.querySelector('.modal-close');
   closeBtnEl.addEventListener('click', onModalClose);
-  document.addEventListener('keydown', e => {
-    if (e.keyCode === 27) {
-      onModalClose();
-    }
-  });
-  backDropEl.addEventListener('click', e => {
-    if (e.target === e.currentTarget) {
-      onModalClose();
-    }
-  });
 }
 
 // getMovie()

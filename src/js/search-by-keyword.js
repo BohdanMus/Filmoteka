@@ -11,6 +11,7 @@ export let searchResult = []; //------------------------------------------------
 const refs = {
   formRef: document.querySelector('.header-search-form'),
   galleryRef: document.querySelector('.gallery-list'),
+  inputError: document.querySelector('.input-error'),
 };
 
 refs.formRef.addEventListener('submit', onSearchMovieBtnClick);
@@ -18,6 +19,7 @@ refs.formRef.addEventListener('submit', onSearchMovieBtnClick);
 export function onSearchMovieBtnClick(e) {
   e.preventDefault();
   const keyWord = e.target.elements.search.value.trim();
+  refs.inputError.style.display = 'none';
 
   getMovie(keyWord).then(data => {
     searchResult = data; //----------------------------------------------------------------------------
@@ -52,6 +54,9 @@ export function onSearchMovieBtnClick(e) {
           // console.log('масив на вибраній сторінці', data[1]);
         });
       });
+    } else {
+      // Якщо отриманий масив порожній - показуємо текст про помилку
+      refs.inputError.style.display = 'flex';
     }
   });
 }

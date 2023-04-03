@@ -1,7 +1,7 @@
 .modal {
   padding: 48px 20px 40px 20px;
   position: fixed;
-
+  display: block;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%) scale(1);
@@ -198,4 +198,8 @@
   top: 0;
   transition: opacity 250ms var(--transition-timing-function),
     visibility 250ms var(--transition-timing-function);
+}
+
+.is-hidden {
+  display: none;
 }

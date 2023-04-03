@@ -1,16 +1,18 @@
 import { getGenres, genresArray } from './js/genres';
 import { galleryRender } from './js/trending';
 import { page } from './js/pagination';
-import { showSpinner, hideSpinner } from './js/spinner';
+import './js/spinner';
 import { onSearchMovieBtnClick } from './js/search-by-keyword';
 import './js/scroll-up-btn';
 import './js/open-modal';
-import './js/modal-close'
+import './js/modal-close';
 import { onOpenModalTeamClick } from './js/team-modal';
+import './js/set-to-local-storage';
 
 const refs = {
   formRef: document.querySelector('.header-search-form'),
   openModalTeamBtn: document.getElementById('open-modal-btn'),
+ 
 };
 
 galleryRender(page);
