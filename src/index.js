@@ -9,10 +9,11 @@ import './js/modal-close';
 import { onOpenModalTeamClick } from './js/team-modal';
 import './js/set-to-local-storage';
 
+import { galleryEl, onClick } from './js/filmCard';
+
 const refs = {
   formRef: document.querySelector('.header-search-form'),
   openModalTeamBtn: document.getElementById('open-modal-btn'),
- 
 };
 
 galleryRender(page);
