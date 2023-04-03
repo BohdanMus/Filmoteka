@@ -4,12 +4,19 @@ import { fetchMovies, prePoster, galleryEl } from './API';
 import { noImageURL } from './search-by-keyword';
 import { movieData } from './trending';
 import { searchResult } from './search-by-keyword';
+import {
+  refs,
+  onAddToWatchedList,
+  onAddToQueueList,
+} from './set-to-local-storage';
+import { modalCloseBtn, modalWindow } from './modal-close';
 const BASE_URL = 'https://api.themoviedb.org/3';
 const USER_KEY = '9e4f0ad78cbe1148a9d4c0c8389afc83';
 const gallery = document.querySelector('.gallery-list');
 const modalEl = document.querySelector('.modal');
 const backDropEl = document.querySelector('.backdrop');
 const modalContentEl = document.querySelector('.modal');
+const testContainerEl = document.querySelector('.test-container');
 let markup = '';
 
 gallery.addEventListener('click', onOpenModal);
@@ -21,6 +28,7 @@ function onModalClose() {
   markup = '';
 }
 const createListCard = document.querySelector('.card');
+
 export function onOpenModal(event) {
   let movieArray = [];
   event.preventDefault();
@@ -35,11 +43,39 @@ export function onOpenModal(event) {
   movieArray = searchResult.length > 0 ? searchResult[1] : movieData;
 
   movieModalRender(movieArray, listId);
-  // const getMovie = async () => {
-  //     const { data } = await axios.get(
-  //       `${BASE_URL}/movie/${listId}?api_key=${USER_KEY}`
-  //     );
-  //     return data;
+  const closeBtnEl = document.querySelector('.modal-close');
+  closeBtnEl.addEventListener('click', onModalClose);
+  document.addEventListener('keydown', e => {
+    if (e.keyCode === 27) {
+      onModalClose();
+    }
+  });
+  backDropEl.addEventListener('click', e => {
+    if (e.target === e.currentTarget) {
+      onModalClose();
+    }
+  });
+  //---------------------Лістенери інших функцій на кнопки модалки фільма ---- вмикаються при відкритті вікна!------
+  //-------modal-close.js-------------
+  closeBtnEl.addEventListener('click', () => {
+    onModalClose();
+  });
+
+  modalContentEl.addEventListener('click', e => {
+    if (e.target === modalWindow) {
+      onModalClose();
+    }
+  });
+  document.addEventListener('keydown', e => {
+    if (e.code === 'Escape') {
+      onModalClose();
+    }
+  });
+  //-------modal-close.js-------------
+  // const watchedBtn = document.querySelector('.js-watchedBtn');
+  // const queueBtn = document.querySelector('.js-queueBtn');
+  // watchedBtn.addEventListener('click', onAddToWatchedList);
+  // queueBtn.addEventListener('click', onAddToQueueList);
 }
 
 function movieModalRender(movieArray, listId) {
@@ -74,7 +110,11 @@ function movieModalRender(movieArray, listId) {
       <path d="M8 8L22 22" stroke="black" stroke-width="2" />
       <path d="M8 22L22 8" stroke="black" stroke-width="2" />
     </svg>`;
+  // <button type="button" class="modal-close" data-modal-close>
+  //   ${icon}
+  // </button>;
   markup = `
+  
    <button type="button" class="modal-close" data-modal-close>
     ${icon}
   </button>
@@ -114,19 +154,14 @@ function movieModalRender(movieArray, listId) {
       <button type="button" class="modal-button">ADD TO QUEUE</button>
     </div>
   </div>`;
+
   modalContentEl.insertAdjacentHTML('afterbegin', markup);
-  const closeBtnEl = document.querySelector('.modal-close');
-  closeBtnEl.addEventListener('click', onModalClose);
 }
-
-// getMovie()
-// .then(listData => console.log(listData))
-// .catch(error => console.log(error));
-
-// window.addEventListener('keydown', onCloseModal);
-// function onCloseModal(event) {
-//   if (event.code !== 'Escape') return;
-//   // instance.close()
-//   window.removeEventListener('keydown', onCloseModal);
-// }
-//}
+//<div class="btn-block">
+//<button type="button" class="modal-button js-watchedBtn">
+//ADD TO WATCHED
+//</button>
+//<button type="button" class="modal-button js-queueBtn">
+//ADD TO QUEUE
+//</button>
+//</div>;

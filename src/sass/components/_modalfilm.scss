@@ -203,3 +203,19 @@
 .is-hidden {
   display: none;
 }
+.wrapper {
+  @include tablet {
+    padding: 40px 72px 40px 36px;
+    display: flex;
+    gap: 68px;
+    width: 704px;
+    height: 552px;
+  }
+  @include desktop {
+    padding: 40px 12px;
+    display: flex;
+    gap: 16px;
+    width: 806px;
+    height: 558px;
+  }
+}
