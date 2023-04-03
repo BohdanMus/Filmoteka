@@ -1,14 +1,12 @@
 import axios from 'axios';
-
+import {watchedBtn} from './open-modal'
 const BASE_URL = 'https://api.themoviedb.org/3';
 const USER_KEY = '9e4f0ad78cbe1148a9d4c0c8389afc83';
-export const refs = {
-  watchedBtn: document.querySelector('.js-watchedBtn'),
-  queueBtn: document.querySelector('.js-queueBtn'),
-};
+// export const refs = {
+//   watchedBtn: document.querySelector('.js-watchedBtn'),
+//   queueBtn: document.querySelector('.js-queueBtn'),
+// };
 
-// refs.watchedBtn.addEventListener('click', onAddToWatchedList);
-// refs.queueBtn.addEventListener('click', onAddToQueueList);
 
 let savedInputsWatched = localStorage.getItem('addToWatched');
 // console.log(0 == savedInputsWatched.length - 1);
@@ -21,6 +19,7 @@ let savedInputsQueue = localStorage.getItem('addToQueue');
 // }
 
 export async function onAddToWatchedList(e) {
+  const watchedBtn = document.querySelector('.js-watchedBtn')
   const modalElements = e.target;
   //get name from modal
   const filmName =
@@ -52,8 +51,9 @@ export async function onAddToWatchedList(e) {
     ? [genresString.split(', ')]
     : genresString;
   const releaseDate = searchedFilmInfo.release_date.slice(0, 4);
+  const id = searchedFilmInfo.id;
 
-  const watchedLibrary = { poster, title, genres, releaseDate };
+  const watchedLibrary = { poster, title, genres, releaseDate, id };
   // console.log(watchedLibrary);
 
   //push object to localStore
@@ -70,8 +70,8 @@ export async function onAddToWatchedList(e) {
     }
   }
 
-  if (refs.watchedBtn.textContent.toLowerCase().trim() !== 'add to watched') {
-    refs.watchedBtn.textContent = 'ADD TO WATCHED';
+  if (watchedBtn.textContent.toLowerCase().trim() !== 'add to watched') {
+    watchedBtn.textContent = 'ADD TO WATCHED';
 
     const movieIndex = parsedInputs.findIndex(movie => movie.title === title);
     parsedInputs.splice(movieIndex, 1);
@@ -79,13 +79,14 @@ export async function onAddToWatchedList(e) {
     return;
   }
 
-  refs.watchedBtn.textContent = 'DELETE FROM WATCHED';
+  watchedBtn.textContent = 'DELETE FROM WATCHED';
 
   parsedInputs.push(watchedLibrary);
   localStorage.setItem('addToWatched', JSON.stringify(parsedInputs));
 }
 
 export async function onAddToQueueList(e) {
+  const queueBtn = document.querySelector('.js-queueBtn');
   const modalElements = e.target;
   //get name from modal
   const filmName =
@@ -117,12 +118,13 @@ export async function onAddToQueueList(e) {
     ? [genresString.split(', ')]
     : genresString;
   const releaseDate = searchedFilmInfo.release_date.slice(0, 4);
+  const id = searchedFilmInfo.id;
 
-  const queueLibrary = { poster, title, genres, releaseDate };
+  const queueLibrary = { poster, title, genres, releaseDate, id };
   // console.log(queueLibrary);
 
   //push object to localStore
-  const savedInputsQueue = localStorage.getItem('addToQueue');
+  // const savedInputsQueue = localStorage.getItem('addToQueue');
   let parsedInputs = [];
 
   if (savedInputsQueue) {
@@ -135,15 +137,15 @@ export async function onAddToQueueList(e) {
     }
   }
 
-  if (refs.queueBtn.textContent.toLowerCase().trim() !== 'add to queue') {
-    refs.queueBtn.textContent = 'ADD TO QUEUE';
+  if (queueBtn.textContent.toLowerCase().trim() !== 'add to queue') {
+    queueBtn.textContent = 'ADD TO QUEUE';
 
     const movieIndex = parsedInputs.findIndex(movie => movie.title === title);
     parsedInputs.splice(movieIndex, 1);
     localStorage.setItem('addToQueue', JSON.stringify(parsedInputs));
     return;
   }
-  refs.queueBtn.textContent = 'DELETE FROM QUEUE';
+  queueBtn.textContent = 'DELETE FROM QUEUE';
 
   parsedInputs.push(queueLibrary);
   localStorage.setItem('addToQueue', JSON.stringify(parsedInputs));

@@ -72,10 +72,10 @@ export function onOpenModal(event) {
     }
   });
   //-------modal-close.js-------------
-  // const watchedBtn = document.querySelector('.js-watchedBtn');
-  // const queueBtn = document.querySelector('.js-queueBtn');
-  // watchedBtn.addEventListener('click', onAddToWatchedList);
-  // queueBtn.addEventListener('click', onAddToQueueList);
+  const watchedBtn = document.querySelector('.js-watchedBtn');
+  const queueBtn = document.querySelector('.js-queueBtn');
+  watchedBtn.addEventListener('click', onAddToWatchedList);
+  queueBtn.addEventListener('click', onAddToQueueList);
 }
 
 function movieModalRender(movieArray, listId) {
@@ -150,8 +150,8 @@ function movieModalRender(movieArray, listId) {
     <p class="description-film-info">${overview} 
     </p>
     <div class="btn-block">
-      <button type="button" class="modal-button">ADD TO WATCHED</button>
-      <button type="button" class="modal-button">ADD TO QUEUE</button>
+      <button type="button" class="modal-button js-watchedBtn">ADD TO WATCHED</button>
+      <button type="button" class="modal-button js-queueBtn">ADD TO QUEUE</button>
     </div>
   </div>`;
 
