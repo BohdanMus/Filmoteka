@@ -140,15 +140,17 @@ import axios from 'axios';
 const BASE_URL = 'https://api.themoviedb.org/3';
 const USER_KEY = '9e4f0ad78cbe1148a9d4c0c8389afc83';
 const noImageURL = new URL('/src/images/no-foto.jpg', import.meta.url);
-const allertImageURL = new URL('/src/images/projector.jpg', import.meta.url);
+const alertImageURL = new URL('/src/images/movie-time.jpg', import.meta.url);
 const prePoster = 'https://image.tmdb.org/t/p/original/';
 
 const refs = {
   queueBtn: document.querySelector('.button-queue'),
   watchedBtn: document.querySelector('.button-watched'),
   librarylist: document.querySelector('.library-list'),
+  libraryBox: document.querySelector('.library-section'),
 };
 
+refs.libraryBox.classList.add('visually-hidden');
 createQueueList();
 createWatchedList();
 
@@ -169,7 +171,7 @@ function createWatchedList() {
         No movies added. Select a movie on the
         <a href="../index.html" class="homepage">Home</a> page
       </p>
-      <img class="film-img" src="${allertImageURL}" alt="hands"/>
+      <img class="film-img empty-img" src="${alertImageURL}" alt="hands"/>
     </div>
     `;
     return;
@@ -193,7 +195,7 @@ function createQueueList() {
         No movies added. Select a movie on the
         <a href="../index.html" class="homepage">Home</a> page
       </p>
-      <img class="film-img" src="${allertImageURL}" alt="" />
+      <img class="film-img empty-img" src="${alertImageURL}" alt="" />
     </div>
     `;
     return;
