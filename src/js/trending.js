@@ -1,10 +1,12 @@
 import { genresArray, getGenres } from './genres';
 import { fetchMovies, prePoster, galleryEl } from './API';
 import { noImageURL } from './search-by-keyword';
+
 export let movieData = [];
 export async function galleryRender(page) {
   const results = await fetchMovies(page);
   movieData = results.results;
+
   const markup = results.results
     .map(
       ({
