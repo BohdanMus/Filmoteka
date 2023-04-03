@@ -79,6 +79,7 @@ export function onOpenModal(event) {
 }
 
 function movieModalRender(movieArray, listId) {
+  modalContentEl.innerHTML='';
   const movieToFind = movieArray.find(movie => movie.id === Number(listId));
 
   const {
