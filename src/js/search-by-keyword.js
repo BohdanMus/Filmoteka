@@ -2,6 +2,7 @@ import axios from 'axios';
 import 'tui-pagination/dist/tui-pagination.css';
 import Pagination from 'tui-pagination';
 
+const allertImageURL = new URL('/src/images/projector.jpg', import.meta.url);
 const BASE_URL = 'https://api.themoviedb.org/3';
 const USER_KEY = '9e4f0ad78cbe1148a9d4c0c8389afc83';
 const prePoster = 'https://image.tmdb.org/t/p/original/';
@@ -55,8 +56,13 @@ export function onSearchMovieBtnClick(e) {
         });
       });
     } else {
-      // Якщо отриманий масив порожній - показуємо текст про помилку
+      // Якщо отриманий масив порожній - показуємо текст про помилку та Очищуєм розмітку з фільмами,додаючи картинку-заглушку
       refs.inputError.style.display = 'flex';
+      refs.galleryRef.innerHTML = `<div class="empty-wrapp">
+      <img class="film-img" src="${allertImageURL}" alt="" />
+    </div>
+    `;
+      
     }
   });
 }
