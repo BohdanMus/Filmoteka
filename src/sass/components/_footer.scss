@@ -21,15 +21,6 @@ footer {
   }
 }
 
-.footer__wrap {
-  display: flex;
-  margin-top: 10px;
-
-  @include tablet {
-    margin-top: 0;
-  }
-}
-
 .foter__list-item,
 .footer__btn {
   font-weight: 400;
@@ -69,6 +60,10 @@ footer {
   }
 }
 
+.footer__list-icon {
+  animation: logoPulse 1500ms linear 500ms infinite;
+}
+
 .footer__btn {
   background-color: transparent;
   text-decoration: underline #545454;
@@ -87,13 +82,3 @@ footer {
   width: 200px;
   height: 200px;
 }
-
-// .for__footer-wrapper {
-//   display: flex;
-//   flex-direction: column;
-//   height: 100vh;
-// }
-
-// main {
-//   flex: 1;
-// }
