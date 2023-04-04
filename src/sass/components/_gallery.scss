@@ -1,66 +1,66 @@
-.container {
-  width: 1280px;
-  margin: 0 auto;
-  padding: 0 32px;
-  text-align: center;
-}
+// .container {
+//   width: 1280px;
+//   margin: 0 auto;
+//   padding: 0 32px;
+//   text-align: center;
+// }
 
-.list {
-  list-style: none;
-}
+// .list {
+//   list-style: none;
+// }
 
-.gallery-list {
-  display: flex;
-  flex-wrap: wrap;
-  column-gap: 16px;
-  row-gap: 32px;
-  margin-bottom: 20px;
-}
-.gallery-item {
-  width: calc((100% - 32px) / 3);
-}
+// .gallery-list {
+//   display: flex;
+//   flex-wrap: wrap;
+//   column-gap: 16px;
+//   row-gap: 32px;
+//   margin-bottom: 20px;
+// }
+// .gallery-item {
+//   width: calc((100% - 32px) / 3);
+// }
 
-.photo-card {
-  width: 100%;
-  height: 100%;
-}
+// .photo-card {
+//   width: 100%;
+//   height: 100%;
+// }
 
-.item-backdrop {
-  display: block;
-  width: 390px;
-  height: 574px;
-  object-fit: cover;
-  border-radius: 2%;
-}
+// .item-backdrop {
+//   display: block;
+//   width: 390px;
+//   height: 574px;
+//   object-fit: cover;
+//   border-radius: 2%;
+// }
 
-.sub-card {
-  margin-top: 2px;
-  display: flex;
-  gap: 10px;
-}
+// .sub-card {
+//   margin-top: 2px;
+//   display: flex;
+//   gap: 10px;
+// }
 
-.card-title {
-  margin-top: 12px;
-  font-family: 'Roboto';
-  font-style: normal;
-  font-weight: 500;
-  font-size: 20px;
-  line-height: 1.2;
-  text-align: start;
-  text-transform: uppercase;
-}
-.card-genres,
-.date {
-  color: rgba(255, 107, 8, 1);
-  font-family: 'Roboto';
-  font-style: normal;
-  font-weight: 500;
-  font-size: 20px;
-  line-height: 1.2;
-}
+// .card-title {
+//   margin-top: 12px;
+//   font-family: 'Roboto';
+//   font-style: normal;
+//   font-weight: 500;
+//   font-size: 20px;
+//   line-height: 1.2;
+//   text-align: start;
+//   text-transform: uppercase;
+// }
+// .card-genres,
+// .date {
+//   color: rgba(255, 107, 8, 1);
+//   font-family: 'Roboto';
+//   font-style: normal;
+//   font-weight: 500;
+//   font-size: 20px;
+//   line-height: 1.2;
+// }
 
-.card-genres::after {
-  color: rgba(255, 107, 8, 1);
-  content: '|';
-  margin-left: 10px;
-}
+// .card-genres::after {
+//   color: rgba(255, 107, 8, 1);
+//   content: '|';
+//   margin-left: 10px;
+// }
