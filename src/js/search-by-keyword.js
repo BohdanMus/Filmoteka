@@ -25,6 +25,8 @@ export function onSearchMovieBtnClick(e) {
 
   getMovie(keyWord).then(data => {
     searchResult = data; //----------------------------------------------------------------------------
+    paginationEl.classList.remove('visually-hidden');
+
     // Перевіряємо чи масив з фільмами не пустий
     if (data[1].length > 0) {
       // Очищуєм розмітку з популярними фільмами
