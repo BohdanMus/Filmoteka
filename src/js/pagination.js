@@ -3,8 +3,6 @@ import 'tui-pagination/dist/tui-pagination.css';
 import { galleryRender } from './trending';
 import { fetchMovies, prePoster, galleryEl } from './API';
 
-export const paginationEl = document.querySelector('.tui-pagination');
-
 const options = {
   totalItems: 500,
   itemsPerPage: 20,
@@ -32,8 +30,6 @@ const options = {
       '</a>',
   },
 };
-
-paginationEl.classList.add('visually-hidden');
 export const pagination = new Pagination('pagination', options);
 
 export const page = pagination.getCurrentPage();

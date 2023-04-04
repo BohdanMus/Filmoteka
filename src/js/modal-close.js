@@ -1,23 +1,16 @@
-const modalTrigger = document.querySelectorAll('[data-modal]'),
-  modalCloseBtn = document.querySelector('[data-modal-close]'),
-  modalWindow = document.querySelector('.modal');
+// const modalEl = document.querySelector(# тут id  або клас всєї модалки);
+// const modalBtnClose = document.querySelector(# клас хрестика закриття модалки);
 
-function onModalClose() {
-  modalWindow.classList.toggle('is-hidden');
-  document.body.style.overflow = '';
-}
+// const onCloseModal = (e) => {
+//     if (event.currentTarget === event.target) {
+//         modalEL.style.display = 'none';
+//     }
+// }
 
-// modalCloseBtn.addEventListener('click', () => {
-//     onModalClose();
-// });
-
-// modalWindow.addEventListener('click', e => {
-//   if (e.target === modalWindow) {
-//     onModalClose();
-//   }
-// });
-// document.addEventListener('keydown', e => {
-//   if (e.code === 'Escape') {
-//     onModalClose();
-//   }
-// });
+// modalEl.addEventListener('click', OnCloseModal);
+// modalBtnClose.addEventListener('click', OnCloseModal);
+// document.removeEventListener('keydown', (e) => {
+//     if (e.key === 'Escape') {
+//          modalEL.style.display = 'none';
+//     }
+// })

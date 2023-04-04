@@ -1,13 +1,9 @@
 import { genresArray, getGenres } from './genres';
 import { fetchMovies, prePoster, galleryEl } from './API';
 import { noImageURL } from './search-by-keyword';
-import { paginationEl } from './pagination';
 
-export let movieData = [];
 export async function galleryRender(page) {
-  paginationEl.classList.add('visually-hidden');
   const results = await fetchMovies(page);
-  movieData = results.results;
 
   const markup = results.results
     .map(
@@ -86,5 +82,4 @@ export async function galleryRender(page) {
     )
     .join('');
   galleryEl.insertAdjacentHTML('beforeend', markup);
-  paginationEl.classList.remove('visually-hidden');
 }

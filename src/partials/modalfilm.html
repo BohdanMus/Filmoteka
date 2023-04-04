@@ -1,3 +1,58 @@
-<div class="backdrop visually-hidden">
-  <div class="modal" data-modal></div>
+<div class="modal">
+  <button type="button" class="modal-close" data-modal-close>
+    <svg class="modal-close-icon" width="32" height="32">
+      <use href="./images/icons.svg#icon-close"></use>
+    </svg>
+  </button>
+  <!-----------------------------------------------------START OF JS MARKUP------------------------------------------------------------------------>
+  <div class="modal-poster">
+    <img
+      class="img-film"
+      src="https://images-na.ssl-images-amazon.com/images/I/81qB1pCnBIL._AC_SL1500_.jpg"
+      alt=""
+    />
+  </div>
+  <div class="modal-description">
+    <h2 class="modal-title">A FISTFUL OF LEAD</h2>
+    <div class="data-wrapper">
+      <div class="data-keys">
+        <ul class="keys-list">
+          <li class="keys-item">Vote / Votes</li>
+          <li class="keys-item">Popularity</li>
+          <li class="keys-item">Original Title</li>
+          <li class="keys-item">Genre</li>
+        </ul>
+      </div>
+      <div class="data-values">
+        <ul class="values-list">
+          <li class="value-item">
+            <span class="rating"> 7.3 </span>/<span class="votes"> 1260</span>
+          </li>
+          <li class="value-item popularity">100.2</li>
+          <li class="value-item movie-title">A FISTFUL OF LEAD</li>
+          <li class="value-item movie-genres">Western</li>
+        </ul>
+      </div>
+    </div>
+    <h2 class="about-film">ABOUT</h2>
+    <p class="description-film-info">
+      Four of the West’s most infamous outlaws assemble to steal a huge stash of
+      gold from the most corrupt settlement of the gold rush towns. But not all
+      goes to plan one is killed and the other three escapes with bags of gold
+      hide out in the abandoned gold mine where they happen across another gang
+      of three – who themselves were planning to hit the very same bank! As
+      tensions rise, things go from bad to worse as they realise the bags of
+      gold are filled with lead... they’ve been double crossed – but by who and
+      how?
+    </p>
+    <!-----------------------------------------------------END OF JS MARKUP------------------------------------------------------------------------>
+    <div class="btn-block">
+      <button type="button" class="modal-button js-watchedBtn">
+        ADD TO WATCHED
+      </button>
+      <button type="button" class="modal-button js-queueBtn">
+        ADD TO QUEUE
+      </button>
+    </div>
+  </div>
 </div>

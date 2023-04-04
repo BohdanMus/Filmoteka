@@ -1,4 +1,5 @@
 import axios from 'axios';
+<<<<<<< HEAD
 import { genresArray, getGenres } from './genres';
 import { fetchMovies, prePoster, galleryEl } from './API';
 import { noImageURL } from './search-by-keyword';
@@ -26,49 +27,40 @@ const testContainerEl = document.querySelector('.test-container');
 let markup = '';
 export let movieId = '';
 
+=======
+const BASE_URL = 'https://api.themoviedb.org/3';
+const USER_KEY = '9e4f0ad78cbe1148a9d4c0c8389afc83';
+const gallery = document.querySelector('.gallery-list');
+>>>>>>> parent of 24736c0 (Merge branch 'main' into realize-movie-trailer)
 gallery.addEventListener('click', onOpenModal);
 
-function onModalClose() {
-  backDropEl.classList.add('visually-hidden');
-  movieToFind = {};
-  modalContentEl.innerHTML = '';
-  markup = '';
-}
-const createListCard = document.querySelector('.card');
-
 export function onOpenModal(event) {
-  let movieArray = [];
   event.preventDefault();
+
   if (event.currentTarget === event.target) {
     return;
   }
 
   const list = event.target.closest('li');
   const listId = list.dataset.id;
+<<<<<<< HEAD
   movieId = listId;
   backDropEl.classList.remove('visually-hidden');
+=======
+>>>>>>> parent of 24736c0 (Merge branch 'main' into realize-movie-trailer)
 
-  movieArray = searchResult.length > 0 ? searchResult[1] : movieData;
+  const getMovie = async () => {
+    const { data } = await axios.get(
+      `${BASE_URL}/movie/${listId}?api_key=${USER_KEY}`
+    );
+    return data;
+  };
 
-  movieModalRender(movieArray, listId);
-  const closeBtnEl = document.querySelector('.modal-close');
-  closeBtnEl.addEventListener('click', onModalClose);
-  document.addEventListener('keydown', e => {
-    if (e.keyCode === 27) {
-      onModalClose();
-    }
-  });
-  backDropEl.addEventListener('click', e => {
-    if (e.target === e.currentTarget) {
-      onModalClose();
-    }
-  });
-  //---------------------Лістенери інших функцій на кнопки модалки фільма ---- вмикаються при відкритті вікна!------
-  //-------modal-close.js-------------
-  closeBtnEl.addEventListener('click', () => {
-    onModalClose();
-  });
+  getMovie()
+    .then(listData => console.log(listData))
+    .catch(error => console.log(error));
 
+<<<<<<< HEAD
   modalContentEl.addEventListener('click', e => {
     if (e.target === modalWindow) {
       onModalClose();
@@ -186,3 +178,12 @@ function movieModalRender(movieArray, listId) {
 //ADD TO QUEUE
 //</button>
 //</div>;
+=======
+  // window.addEventListener('keydown', onCloseModal);
+  // function onCloseModal(event) {
+  //   if (event.code !== 'Escape') return;
+  //   // instance.close()
+  //   window.removeEventListener('keydown', onCloseModal);
+  // }
+}
+>>>>>>> parent of 24736c0 (Merge branch 'main' into realize-movie-trailer)
