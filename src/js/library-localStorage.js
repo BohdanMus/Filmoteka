@@ -196,6 +196,7 @@ function onOpenModal(event) {
     .catch(error => console.log(error));
 
   function renderCard(data) {
+    createListCard.innerHTML = '';
     const icon = `<svg
       width="30"
       height="30"
