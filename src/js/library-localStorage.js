@@ -12,7 +12,6 @@ const refs = {
   libraryBox: document.querySelector('.library-section'),
 };
 
-// refs.libraryBox.classList.add('visually-hidden');
 createQueueList();
 createWatchedList();
 
@@ -24,7 +23,16 @@ function createWatchedList() {
   refs.watchedBtn.classList.add('active');
   refs.queueBtn.classList.remove('active');
 
-  const savedFilm = JSON.parse(localStorage.getItem('addToWatched')) || [];
+  let savedFilm = JSON.parse(localStorage.getItem('addToWatched')) || [];
+
+  const unicSavedFilm = savedFilm.reduce(
+    (savedFilm, film) => (
+      savedFilm.find(({ id }) => film.id == id) || savedFilm.push(film),
+      savedFilm
+    ),
+    []
+  );
+  console.log(unicSavedFilm);
 
   if (!savedFilm.length) {
     console.log('no movie');
@@ -42,7 +50,7 @@ function createWatchedList() {
   refs.librarylist.innerHTML = '';
   console.log('savedFilm:', savedFilm);
 
-  libraryMarkup(savedFilm);
+  libraryMarkup(unicSavedFilm);
 }
 
 function createQueueList() {
@@ -50,6 +58,14 @@ function createQueueList() {
   refs.watchedBtn.classList.remove('active');
 
   const savedFilm = JSON.parse(localStorage.getItem('addToQueue')) || [];
+
+  const unicSavedFilm = savedFilm.reduce(
+    (savedFilm, film) => (
+      savedFilm.find(({ id }) => film.id == id) || savedFilm.push(film),
+      savedFilm
+    ),
+    []
+  );
 
   if (!savedFilm.length) {
     console.log('no movie');
@@ -66,12 +82,11 @@ function createQueueList() {
   refs.librarylist.innerHTML = '';
   console.log('savedFilm:', savedFilm);
 
-  libraryMarkup(savedFilm);
+  libraryMarkup(unicSavedFilm);
 }
 
-function libraryMarkup(savedFilm) {
-  console.log(savedFilm);
-  const markup = savedFilm
+function libraryMarkup(unicSavedFilm) {
+  const markup = unicSavedFilm
     .map(film => {
       return `<li class="film-card" data-id="${film.id}">
           <picture class="film-card__img">
@@ -137,8 +152,8 @@ function libraryMarkup(savedFilm) {
   return markup;
 }
 
+// -----||------
 // import { onOpenModal } from './open-modal';
-// import './open-modal';
 
 // const refs = {
 //   queueBtn: document.querySelector('.button-queue'),
@@ -272,5 +287,3 @@ function libraryMarkup(savedFilm) {
 //   refs.librarylist.innerHTML = markup;
 //   return markup;
 // }
-
-// -----||------
