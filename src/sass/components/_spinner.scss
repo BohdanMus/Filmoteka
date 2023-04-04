@@ -5,10 +5,9 @@
     border-radius: 50%;
     border-color: rgb(244, 21, 21) transparent rgb(237, 27, 27) transparent;
     animation: spin 1.2s ease infinite;
-    // animation: loader 1300ms linear infinite;
   }
 
-  @keyframes spinner { 
+  @keyframes spin { 
     100% {
       transform: rotate(360deg);
     }
@@ -20,7 +19,7 @@
       position: fixed;
       top: 0;
       z-index: 100;
-      transition: 600ms;
+      transition: 100ms;
       display: flex;
       align-items: center;
       justify-content: center;
