@@ -1,12 +1,11 @@
 import axios from 'axios';
-import {watchedBtn} from './open-modal'
+import { watchedBtn } from './open-modal';
 const BASE_URL = 'https://api.themoviedb.org/3';
 const USER_KEY = '9e4f0ad78cbe1148a9d4c0c8389afc83';
 // export const refs = {
 //   watchedBtn: document.querySelector('.js-watchedBtn'),
 //   queueBtn: document.querySelector('.js-queueBtn'),
 // };
-
 
 let savedInputsWatched = localStorage.getItem('addToWatched');
 // console.log(0 == savedInputsWatched.length - 1);
@@ -19,7 +18,7 @@ let savedInputsQueue = localStorage.getItem('addToQueue');
 // }
 
 export async function onAddToWatchedList(e) {
-  const watchedBtn = document.querySelector('.js-watchedBtn')
+  const watchedBtn = document.querySelector('.js-watchedBtn');
   const modalElements = e.target;
   //get name from modal
   const filmName =
