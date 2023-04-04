@@ -32,13 +32,14 @@ function createWatchedList() {
     refs.librarylist.innerHTML = `<div class="empty-wrapp">
       <p class="empty-text">
         No movies added. Select a movie on the
-        <a href="${homeURL}" class="homepage">Home</a> page
+        <a href="/src/index.html" class="homepage">Home</a> page
       </p>
       <img class="film-img empty-img" src="${alertImageURL}" alt="hands"/>
     </div>
     `;
     return;
   }
+
   refs.librarylist.innerHTML = '';
   console.log('savedFilm:', savedFilm);
 
@@ -56,7 +57,7 @@ function createQueueList() {
     refs.librarylist.innerHTML = `<div class="empty-wrapp">
       <p class="empty-text">
         No movies added. Select a movie on the
-        <a href="${homeURL}" class="homepage">Home</a> page
+        <a href="/src/index.html" class="homepage">Home</a> page
       </p>
       <img class="film-img empty-img" src="${alertImageURL}" alt="" />
     </div>
