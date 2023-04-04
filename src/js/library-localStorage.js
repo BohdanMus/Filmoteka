@@ -3,7 +3,6 @@ const BASE_URL = 'https://api.themoviedb.org/3';
 const USER_KEY = '9e4f0ad78cbe1148a9d4c0c8389afc83';
 const noImageURL = new URL('/src/images/no-foto.jpg', import.meta.url);
 const alertImageURL = new URL('/src/images/movie-time.jpg', import.meta.url);
-const homeURL = new URL('/src/index.html', import.meta.url);
 const prePoster = 'https://image.tmdb.org/t/p/original/';
 
 const refs = {
@@ -32,7 +31,7 @@ function createWatchedList() {
     refs.librarylist.innerHTML = `<div class="empty-wrapp">
       <p class="empty-text">
         No movies added. Select a movie on the
-        <a href="/src/index.html" class="homepage">Home</a> page
+        <a href="./index.html" class="homepage">Home</a> page
       </p>
       <img class="film-img empty-img" src="${alertImageURL}" alt="hands"/>
     </div>
@@ -57,7 +56,7 @@ function createQueueList() {
     refs.librarylist.innerHTML = `<div class="empty-wrapp">
       <p class="empty-text">
         No movies added. Select a movie on the
-        <a href="/src/index.html" class="homepage">Home</a> page
+        <a href="./index.html" class="homepage">Home</a> page
       </p>
       <img class="film-img empty-img" src="${alertImageURL}" alt="" />
     </div>
