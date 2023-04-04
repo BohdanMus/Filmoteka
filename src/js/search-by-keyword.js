@@ -1,6 +1,7 @@
 import axios from 'axios';
 import 'tui-pagination/dist/tui-pagination.css';
 import Pagination from 'tui-pagination';
+import { paginationEl } from './pagination';
 
 const allertImageURL = new URL('/src/images/projector.jpg', import.meta.url);
 const BASE_URL = 'https://api.themoviedb.org/3';
@@ -57,12 +58,12 @@ export function onSearchMovieBtnClick(e) {
       });
     } else {
       // Якщо отриманий масив порожній - показуємо текст про помилку та Очищуєм розмітку з фільмами,додаючи картинку-заглушку
+      paginationEl.classList.add('visually-hidden');
       refs.inputError.style.display = 'flex';
       refs.galleryRef.innerHTML = `<div class="empty-wrapp">
       <img class="film-img" src="${allertImageURL}" alt="" />
     </div>
     `;
-      
     }
   });
 }

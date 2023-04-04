@@ -5,6 +5,7 @@ import { paginationEl } from './pagination';
 
 export let movieData = [];
 export async function galleryRender(page) {
+  paginationEl.classList.add('visually-hidden');
   const results = await fetchMovies(page);
   movieData = results.results;
 
