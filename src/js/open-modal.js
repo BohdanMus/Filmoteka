@@ -10,14 +10,21 @@ import {
   onAddToQueueList,
 } from './set-to-local-storage';
 import { modalCloseBtn, modalWindow } from './modal-close';
+import {
+  trailerKey,
+  trailerContainer,
+  getMovieTrailer,
+  renderVideoFrame,
+} from './youtube-trailer';
 const BASE_URL = 'https://api.themoviedb.org/3';
 const USER_KEY = '9e4f0ad78cbe1148a9d4c0c8389afc83';
 const gallery = document.querySelector('.gallery-list');
 const modalEl = document.querySelector('.modal');
 const backDropEl = document.querySelector('.backdrop');
-const modalContentEl = document.querySelector('.modal');
+export const modalContentEl = document.querySelector('.modal');
 const testContainerEl = document.querySelector('.test-container');
 let markup = '';
+export let movieId = '';
 
 gallery.addEventListener('click', onOpenModal);
 
@@ -38,6 +45,7 @@ export function onOpenModal(event) {
 
   const list = event.target.closest('li');
   const listId = list.dataset.id;
+  movieId = listId;
   backDropEl.classList.remove('visually-hidden');
 
   movieArray = searchResult.length > 0 ? searchResult[1] : movieData;
@@ -74,12 +82,14 @@ export function onOpenModal(event) {
   //-------modal-close.js-------------
   const watchedBtn = document.querySelector('.js-watchedBtn');
   const queueBtn = document.querySelector('.js-queueBtn');
+  const trailerButton = document.querySelector('.trailer');
   watchedBtn.addEventListener('click', onAddToWatchedList);
   queueBtn.addEventListener('click', onAddToQueueList);
+  trailerButton.addEventListener('click', getMovieTrailer);
 }
 
 function movieModalRender(movieArray, listId) {
-  modalContentEl.innerHTML='';
+  modalContentEl.innerHTML = '';
   const movieToFind = movieArray.find(movie => movie.id === Number(listId));
 
   const {
@@ -153,10 +163,20 @@ function movieModalRender(movieArray, listId) {
     <div class="btn-block">
       <button type="button" class="modal-button js-watchedBtn">ADD TO WATCHED</button>
       <button type="button" class="modal-button js-queueBtn">ADD TO QUEUE</button>
+      <button type="button" class="modal-button trailer">WATCH TRAILER</button>
     </div>
+    <div class="trailer-container"></div>
   </div>`;
-
   modalContentEl.insertAdjacentHTML('afterbegin', markup);
+  const trailerContainer = document.querySelector('.trailer-container');
+  const iframe = document.createElement('iframe');
+  iframe.src = `https://www.youtube.com/embed/${trailerKey}`;
+  iframe.width = '300';
+  iframe.height = '200';
+  iframe.allowFullscreen = true;
+
+  trailerContainer.innerHTML = '';
+  trailerContainer.appendChild(iframe);
 }
 //<div class="btn-block">
 //<button type="button" class="modal-button js-watchedBtn">

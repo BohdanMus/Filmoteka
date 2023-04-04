@@ -10,6 +10,7 @@ import { onOpenModalTeamClick } from './js/team-modal';
 import './js/set-to-local-storage';
 
 import { galleryEl, onClick } from './js/filmCard';
+import './js/youtube-trailer';
 
 const refs = {
   formRef: document.querySelector('.header-search-form'),
