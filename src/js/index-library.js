@@ -1,5 +1,5 @@
 import { onOpenModalTeamClick } from './team-modal';
-
+import './spinner';
 const refs = {
   openModalTeamBtn: document.getElementById('open-modal-btn'),
 };
