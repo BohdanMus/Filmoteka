@@ -31,7 +31,7 @@ export function onSearchMovieBtnClick(e) {
     if (data[1].length > 0) {
       // Очищуєм розмітку з популярними фільмами
       refs.galleryRef.innerHTML = '';
-
+      paginationEl.classList.remove('visually-hidden');
       // по data[0] малюєм пагінацію
       const instanceFind = new Pagination(container, {
         totalItems: data[0],
@@ -55,7 +55,8 @@ export function onSearchMovieBtnClick(e) {
             'beforeend',
             galleryMarkup(data[1])
           );
-          // console.log('масив на вибраній сторінці', data[1]);
+          paginationEl.classList.remove('visually-hidden');
+          //console.log('масив на вибраній сторінці', data[1]);
         });
       });
     } else {
