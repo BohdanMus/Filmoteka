@@ -150,13 +150,13 @@ const refs = {
   libraryBox: document.querySelector('.library-section'),
 };
 
-refs.libraryBox.classList.add('visually-hidden');
+// refs.libraryBox.classList.add('visually-hidden');
 createQueueList();
 createWatchedList();
 
 refs.watchedBtn.addEventListener('click', createWatchedList);
 refs.queueBtn.addEventListener('click', createQueueList);
-refs.librarylist.addEventListener('click', onOpenModal);
+// refs.librarylist.addEventListener('click', onOpenModal);
 
 function createWatchedList() {
   refs.watchedBtn.classList.add('active');

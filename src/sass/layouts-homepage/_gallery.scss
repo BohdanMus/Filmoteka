@@ -40,7 +40,7 @@
     width: 336px;
   }
   @include desktop {
-    width: 393px;
+    width: calc((100% - 32px) / 3);
   }
 }
 
