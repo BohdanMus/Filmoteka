@@ -1,58 +1,60 @@
-footer {
-  position: relative;
-  bottom: 0px;
-  background-color: #f7f7f7;
-  padding-top: 30px;
-  padding-bottom: 30px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
+.footer {
+  position: absolute;
   width: 100%;
-}
+  height: 100px;
+  margin-top: auto;
+  padding-top: 28px;
+  padding-bottom: 29px;
+  text-align: center;
+  background-color: #f7f7f7;
 
-.foter__list {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-
-  @include tablet {
-    flex-direction: row;
+  @media screen and (min-width: 768px) {
+    height: 79px;
+    padding-top: 30px;
+    padding-bottom: 30px;
   }
 }
 
-.footer__wrap {
-  display: flex;
-  margin-top: 10px;
-
-  @include tablet {
-    margin-top: 0;
+.footer__container {
+  @media screen and (min-width: 768px) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 }
 
-.foter__list-item,
-.footer__btn {
-  font-weight: 400;
+.footer__text {
+font-weight: 400;
   font-size: 14px;
   line-height: 1.14;
   color: #545454;
 
-  @include tablet {
-    font-size: 16px;
-    line-height: 1.19;
+  @media screen and (min-width: 768px) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 }
 
-.foter__list-item:not(:last-child) {
-  margin-right: 5px;
+.footer__sub {
+  color: #545454;
+  line-height: calc(16 / 14);
+  letter-spacing: 0.03em;
+  display: flex;
+  font-size: 14px;
+  justify-content: center;
+  align-items: center;
+
+  @media screen and (min-width: 768px) {
+    font-size: 14px;
+    line-height: calc(19 / 16);
+  }
 }
 
-.footer__list-icon {
-  width: 14px;
-  height: 13px;
-  margin-right: 5px;
-  margin-top: 3px;
-  animation: logoPulse 2500ms linear 500ms infinite;
+.footer__icon {
+  margin-left: 10px;
+  margin-right: 10px;
+  display: block;
 }
 
 @keyframes logoPulse {
@@ -70,16 +72,18 @@ footer {
 }
 
 .footer__btn {
+  padding-top: 10px;
+    padding-bottom: 10px;
+    color: #545454;
+    line-height: calc(16 / 14);
+    letter-spacing: 0.03em;
+    cursor: pointer;
   background-color: transparent;
   text-decoration: underline #545454;
-  transition: var(--transition-duration);
-  transition-timing-function: var(--timing-function);
-}
+
 
 .footer__btn:hover {
-  font-weight: 600;
-  color: #545454bb;
-  text-decoration: underline 2px #545454bb;
+  color: #934a4abb;
 }
 
 .footer__btn:hover 
@@ -88,12 +92,9 @@ footer {
   height: 200px;
 }
 
-// .for__footer-wrapper {
-//   display: flex;
-//   flex-direction: column;
-//   height: 100vh;
-// }
-
-// main {
-//   flex: 1;
-// }
+    @media screen and (min-width: 768px) {
+      font-size: 16px;
+      line-height: calc(19 / 16);
+      padding: 0;
+    }
+    }

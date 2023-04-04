@@ -1,13 +1,15 @@
 import axios from 'axios';
 import 'tui-pagination/dist/tui-pagination.css';
 import Pagination from 'tui-pagination';
+import { paginationEl } from './pagination';
 
+const allertImageURL = new URL('/src/images/projector.jpg', import.meta.url);
 const BASE_URL = 'https://api.themoviedb.org/3';
 const USER_KEY = '9e4f0ad78cbe1148a9d4c0c8389afc83';
 const prePoster = 'https://image.tmdb.org/t/p/original/';
 const container = document.getElementById('pagination');
 export const noImageURL = new URL('/src/images/no-foto.jpg', import.meta.url);
-
+export let searchResult = []; //------------------------------------------------------------------------------
 const refs = {
   formRef: document.querySelector('.header-search-form'),
   galleryRef: document.querySelector('.gallery-list'),
@@ -22,11 +24,14 @@ export function onSearchMovieBtnClick(e) {
   refs.inputError.style.display = 'none';
 
   getMovie(keyWord).then(data => {
+    searchResult = data; //----------------------------------------------------------------------------
+    paginationEl.classList.remove('visually-hidden');
+
     // Перевіряємо чи масив з фільмами не пустий
     if (data[1].length > 0) {
       // Очищуєм розмітку з популярними фільмами
       refs.galleryRef.innerHTML = '';
-
+      paginationEl.classList.remove('visually-hidden');
       // по data[0] малюєм пагінацію
       const instanceFind = new Pagination(container, {
         totalItems: data[0],
@@ -50,12 +55,18 @@ export function onSearchMovieBtnClick(e) {
             'beforeend',
             galleryMarkup(data[1])
           );
-          // console.log('масив на вибраній сторінці', data[1]);
+          paginationEl.classList.remove('visually-hidden');
+          //console.log('масив на вибраній сторінці', data[1]);
         });
       });
     } else {
-      // Якщо отриманий масив порожній - показуємо текст про помилку
+      // Якщо отриманий масив порожній - показуємо текст про помилку та Очищуєм розмітку з фільмами,додаючи картинку-заглушку
+      paginationEl.classList.add('visually-hidden');
       refs.inputError.style.display = 'flex';
+      refs.galleryRef.innerHTML = `<div class="empty-wrapp">
+      <img class="film-img" src="${allertImageURL}" alt="" />
+    </div>
+    `;
     }
   });
 }
