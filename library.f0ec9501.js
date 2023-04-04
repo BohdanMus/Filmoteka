@@ -1,0 +1,2 @@
+const e=document.getElementById("modal-team"),n=document.querySelector(".close");window.onclick=function(n){n.target==e&&e.classList.add("is-hidden")};const d=document.querySelector(".spinner-container");window.addEventListener("load",(()=>{d.classList.add("hide")}));({openModalTeamBtn:document.getElementById("open-modal-btn")}).openModalTeamBtn.addEventListener("click",(function(){e.classList.remove("is-hidden"),n.addEventListener("click",(n=>{e.classList.add("is-hidden")}))}));
+//# sourceMappingURL=library.f0ec9501.js.map

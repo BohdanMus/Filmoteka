@@ -1,0 +1,2 @@
+!function(){var e=document.getElementById("modal-team"),n=document.querySelector(".close");window.onclick=function(n){n.target==e&&e.classList.add("is-hidden")};var d=document.querySelector(".spinner-container");window.addEventListener("load",(function(){d.classList.add("hide")})),{openModalTeamBtn:document.getElementById("open-modal-btn")}.openModalTeamBtn.addEventListener("click",(function(){e.classList.remove("is-hidden"),n.addEventListener("click",(function(n){e.classList.add("is-hidden")}))}))}();
+//# sourceMappingURL=library.b81f1a0e.js.map
