@@ -23,24 +23,25 @@ export async function onAddToWatchedList(e) {
   //get name from modal
   const filmName =
     modalElements.offsetParent.children[2].firstElementChild.textContent;
-  //get genres from modal
-  const genresString =
+    //get genres from modal
+    const genresString =
     modalElements.offsetParent.children[2].children[1].children[1]
-      .firstElementChild.lastElementChild.textContent;
-
-  //get movie by name
-  let searchedFilmInfo = '';
-  try {
-    const getFilm = await axios.get(
-      `${BASE_URL}/search/movie?api_key=${USER_KEY}&language=en-US&query=${filmName}`
-    );
+    .firstElementChild.lastElementChild.textContent;
+    
+    //get movie by name
+    let searchedFilmInfo = '';
+    try {
+      const getFilm = await axios.get(
+        `${BASE_URL}/search/movie?api_key=${USER_KEY}&language=en-US&query=${filmName}`
+        );
     searchedFilmInfo = getFilm.data.results[0];
-    // console.log(searchedFilmInfo);
+    console.log(searchedFilmInfo);
   } catch (error) {
     console.log(error.name);
     return;
   }
-
+  //cheking LS for btn
+  // populateBtn(savedInputsWatched)
   //create object for local store
   const poster = searchedFilmInfo.poster_path;
   const title = searchedFilmInfo.original_title
@@ -53,10 +54,10 @@ export async function onAddToWatchedList(e) {
   const id = searchedFilmInfo.id;
 
   const watchedLibrary = { poster, title, genres, releaseDate, id };
-  // console.log(watchedLibrary);
+  // console.log(queueLibrary);
 
   //push object to localStore
-  // savedInputsWatched = localStorage.getItem('addToWatched');
+  // const savedInputsQueue = localStorage.getItem('addToQueue');
   let parsedInputs = [];
 
   if (savedInputsWatched) {
@@ -77,12 +78,12 @@ export async function onAddToWatchedList(e) {
     localStorage.setItem('addToWatched', JSON.stringify(parsedInputs));
     return;
   }
-
   watchedBtn.textContent = 'DELETE FROM WATCHED';
 
   parsedInputs.push(watchedLibrary);
   localStorage.setItem('addToWatched', JSON.stringify(parsedInputs));
 }
+
 
 export async function onAddToQueueList(e) {
   const queueBtn = document.querySelector('.js-queueBtn');
