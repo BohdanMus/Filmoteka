@@ -1,5 +1,4 @@
 .footer {
-  position: absolute;
   width: 100%;
   height: 100px;
   margin-top: auto;
@@ -24,15 +23,17 @@
 }
 
 .footer__text {
-font-weight: 400;
-  font-size: 14px;
-  line-height: 1.14;
   color: #545454;
+  line-height: calc(16 / 14);
+  letter-spacing: 0.03em;
 
   @media screen and (min-width: 768px) {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    font-size: 16px;
+    line-height: calc(19 / 16);
+
+    // display: flex;
+    // justify-content: center;
+    // align-items: center;
   }
 }
 
@@ -40,13 +41,13 @@ font-weight: 400;
   color: #545454;
   line-height: calc(16 / 14);
   letter-spacing: 0.03em;
+
   display: flex;
-  font-size: 14px;
   justify-content: center;
   align-items: center;
 
   @media screen and (min-width: 768px) {
-    font-size: 14px;
+    font-size: 16px;
     line-height: calc(19 / 16);
   }
 }
@@ -55,6 +56,7 @@ font-weight: 400;
   margin-left: 10px;
   margin-right: 10px;
   display: block;
+  animation: logoPulse 2s infinite;
 }
 
 @keyframes logoPulse {
@@ -73,28 +75,25 @@ font-weight: 400;
 
 .footer__btn {
   padding-top: 10px;
-    padding-bottom: 10px;
-    color: #545454;
-    line-height: calc(16 / 14);
-    letter-spacing: 0.03em;
-    cursor: pointer;
+  padding-bottom: 10px;
+
+  color: #545454;
+  line-height: calc(16 / 14);
+  letter-spacing: 0.03em;
+
+  cursor: pointer;
+
   background-color: transparent;
   text-decoration: underline #545454;
 
+  &:hover,
+  &:focus {
+    color: #f52b15;
+  }
 
-.footer__btn:hover {
-  color: #934a4abb;
+  @media screen and (min-width: 768px) {
+    font-size: 16px;
+    line-height: calc(19 / 16);
+    padding: 0;
+  }
 }
-
-.footer__btn:hover 
-.footer__list-icon {
-  width: 200px;
-  height: 200px;
-}
-
-    @media screen and (min-width: 768px) {
-      font-size: 16px;
-      line-height: calc(19 / 16);
-      padding: 0;
-    }
-    }
