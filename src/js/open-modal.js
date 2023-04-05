@@ -39,6 +39,33 @@ export function onOpenModal(event) {
   movieArray = searchResult.length > 0 ? searchResult[1] : movieData;
 
   movieModalRender(movieArray, listId);
+  //-------------------------------------------------------------------------------------------
+  const watchedBtn = document.querySelector('.js-watchedBtn');
+  const filmId = event.target.dataset.id;
+  const watchedStatus = JSON.parse(localStorage.getItem('addToWatched')).find(
+    film => film.id === Number(listId)
+  );
+  console.log('filmId: ', listId);
+  console.log('watched status', watchedStatus);
+  if (watchedStatus) {
+    watchedBtn.textContent = 'REMOVE FROM WATCHED';
+  } else {
+    watchedBtn.textContent = 'ADD TO WATCHED';
+  }
+  //---------------------------------------------------------------------------------------------
+  const queueBtn = document.querySelector('.js-queueBtn');
+  //const filmId = event.target.dataset.id;
+  const queueStatus = JSON.parse(localStorage.getItem('addToQueue')).find(
+    film => film.id === Number(listId)
+  );
+  console.log('filmId: ', listId);
+  console.log('qstatus', queueStatus);
+  if (queueStatus) {
+    queueBtn.textContent = 'REMOVE FROM QUEUE';
+  } else {
+    queueBtn.textContent = 'ADD TO QUEUE';
+  }
+  //---------------------------------------------------------------------------------------------
   const closeBtnEl = document.querySelector('.modal-close');
   closeBtnEl.addEventListener('click', onModalClose);
   document.addEventListener('keydown', e => {
@@ -68,14 +95,14 @@ export function onOpenModal(event) {
     }
   });
   //-------modal-close.js-------------
-  const watchedBtn = document.querySelector('.js-watchedBtn');
-  const queueBtn = document.querySelector('.js-queueBtn');
+  // const watchedBtn = document.querySelector('.js-watchedBtn');
+  // const queueBtn = document.querySelector('.js-queueBtn');
   watchedBtn.addEventListener('click', onAddToWatchedList);
   queueBtn.addEventListener('click', onAddToQueueList);
 }
 
 function movieModalRender(movieArray, listId) {
-  modalContentEl.innerHTML='';
+  modalContentEl.innerHTML = '';
   const movieToFind = movieArray.find(movie => movie.id === Number(listId));
   
   const {
@@ -111,7 +138,6 @@ function movieModalRender(movieArray, listId) {
   //   ${icon}
   // </button>;
   markup = `
-  
    <button type="button" class="modal-close" data-modal-close>
    ${icon}
    </button>
@@ -149,16 +175,21 @@ function movieModalRender(movieArray, listId) {
     <div class="btn-block">
     <button type="button" class="modal-button js-watchedBtn">ADD TO WATCHED</button>
       <button type="button" class="modal-button js-queueBtn">ADD TO QUEUE</button>
-      </div>
-      </div>`;
+    </div>
+  </div>`;
+
+  modalContentEl.insertAdjacentHTML('afterbegin', markup);
+
+//       </div>
+//       </div>`;
       
-      modalContentEl.insertAdjacentHTML('afterbegin', markup);
-    }
-    //<div class="btn-block">
-    //<button type="button" class="modal-button js-watchedBtn">
-    //ADD TO WATCHED
-    //</button>
-    //<button type="button" class="modal-button js-queueBtn">
-    //ADD TO QUEUE
-//</button>
-//</div>;
+//       modalContentEl.insertAdjacentHTML('afterbegin', markup);
+//     }
+//     //<div class="btn-block">
+//     //<button type="button" class="modal-button js-watchedBtn">
+//     //ADD TO WATCHED
+//     //</button>
+//     //<button type="button" class="modal-button js-queueBtn">
+//     //ADD TO QUEUE
+// //</button>
+// //</div>;

@@ -2,9 +2,6 @@ import axios from 'axios';
 const BASE_URL = 'https://api.themoviedb.org/3';
 const USER_KEY = '9e4f0ad78cbe1148a9d4c0c8389afc83';
 
-
-
-
 export async function onAddToWatchedList(e) {
   watchedBtn = document.querySelector('.js-watchedBtn');
   const modalElements = e.target;
@@ -46,9 +43,15 @@ export async function onAddToWatchedList(e) {
     const savedInputsWatched = localStorage.getItem('addToWatched');
     let parsedInputs = [];
 
-    if (savedInputsWatched) {
-      try {
-        const parsedData = JSON.parse(savedInputsWatched);
+  const watchedLibrary = { poster, title, genres, releaseDate, id };
+
+  //adding and removing to local storage and change btn text
+  const savedInputsWatched = localStorage.getItem('addToWatched');
+  let parsedInputs = [];
+
+  if (savedInputsWatched) {
+    try {
+      const parsedData = JSON.parse(savedInputsWatched);
       parsedInputs.push(...parsedData);
     } catch (error) {
       console.log(error.name);
@@ -61,9 +64,9 @@ export async function onAddToWatchedList(e) {
     parsedInputs.splice(movieIndex, 1);
     localStorage.setItem('addToWatched', JSON.stringify(parsedInputs));
     watchedBtn.textContent = 'ADD TO WATCHED';
-    return  
+    return;
   }
-  watchedBtn.textContent = 'DELETE FROM WATCHED' 
+  watchedBtn.textContent = 'DELETE FROM WATCHED';
   parsedInputs.push(watchedLibrary);
   localStorage.setItem('addToWatched', JSON.stringify(parsedInputs));
 }
@@ -121,15 +124,14 @@ export async function onAddToQueueList(e) {
     }
   }
 
-  
-    
+
   const findItem = parsedInputs.find(item => item.id === id);
   if (parsedInputs.length > 0 && findItem) {
     const movieIndex = parsedInputs.indexOf(findItem);
     parsedInputs.splice(movieIndex, 1);
     localStorage.setItem('addToQueue', JSON.stringify(parsedInputs));
     queueBtn.textContent = 'ADD TO QUEUE';
-    return  
+    return;
   }
   queueBtn.textContent = 'DELETE FROM QUEUE';
   parsedInputs.push(queueLibrary);

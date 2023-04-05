@@ -8,7 +8,6 @@ import './js/open-modal';
 import './js/modal-close';
 import { onOpenModalTeamClick } from './js/team-modal';
 import './js/set-to-local-storage';
-
 import { galleryEl, onClick } from './js/filmCard';
 
 const refs = {
