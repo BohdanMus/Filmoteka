@@ -41,29 +41,23 @@ export function onOpenModal(event) {
   movieModalRender(movieArray, listId);
   //-------------------------------------------------------------------------------------------
   const watchedBtn = document.querySelector('.js-watchedBtn');
-  const filmId = event.target.dataset.id;
-  const watchedStatus = JSON.parse(localStorage.getItem('addToWatched')).find(
-    film => film.id === Number(listId)
-  );
-  console.log('filmId: ', listId);
-  console.log('watched status', watchedStatus);
-  if (watchedStatus) {
-    watchedBtn.textContent = 'REMOVE FROM WATCHED';
-  } else {
-    watchedBtn.textContent = 'ADD TO WATCHED';
+  if (localStorage.getItem('addToWatched')) {
+    const watchedStatus = JSON.parse(localStorage.getItem('addToWatched')).find(
+      film => film.id === Number(listId)
+    );    
+    if (watchedStatus) {
+      watchedBtn.textContent = 'REMOVE FROM WATCHED';
+    } 
   }
   //---------------------------------------------------------------------------------------------
   const queueBtn = document.querySelector('.js-queueBtn');
-  //const filmId = event.target.dataset.id;
-  const queueStatus = JSON.parse(localStorage.getItem('addToQueue')).find(
-    film => film.id === Number(listId)
-  );
-  console.log('filmId: ', listId);
-  console.log('qstatus', queueStatus);
-  if (queueStatus) {
-    queueBtn.textContent = 'REMOVE FROM QUEUE';
-  } else {
-    queueBtn.textContent = 'ADD TO QUEUE';
+  if (localStorage.getItem('addToQueue')) {
+    const queueStatus = JSON.parse(localStorage.getItem('addToQueue')).find(
+      film => film.id === Number(listId)
+    );
+     if (queueStatus) {
+      queueBtn.textContent = 'REMOVE FROM QUEUE';
+    }     
   }
   //---------------------------------------------------------------------------------------------
   const closeBtnEl = document.querySelector('.modal-close');

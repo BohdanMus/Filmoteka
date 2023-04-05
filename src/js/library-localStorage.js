@@ -39,7 +39,7 @@ function createWatchedList() {
     refs.librarylist.innerHTML = `<div class="empty-wrapp">
       <p class="empty-text">
         No movies added. Select a movie on the
-        <a href="./index.html" class="homepage">Home</a> page
+        Home page
       </p>
       <img class="film-img empty-img" src="${alertImageURL}" alt="hands"/>
     </div>
@@ -72,7 +72,7 @@ function createQueueList() {
     refs.librarylist.innerHTML = `<div class="empty-wrapp">
       <p class="empty-text">
         No movies added. Select a movie on the
-        <a href="./index.html" class="homepage">Home</a> page
+        Home page
       </p>
       <img class="film-img empty-img" src="${alertImageURL}" alt="" />
     </div>
