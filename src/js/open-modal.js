@@ -19,7 +19,7 @@ gallery.addEventListener('click', onOpenModal);
 
 function onModalClose() {
   backDropEl.classList.add('visually-hidden');
-  let movieToFind = {};
+  //let movieToFind = {};
   modalContentEl.innerHTML = '';
   markup = '';
 }
