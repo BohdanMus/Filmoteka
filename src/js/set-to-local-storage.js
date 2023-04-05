@@ -43,12 +43,6 @@ export async function onAddToWatchedList(e) {
     const savedInputsWatched = localStorage.getItem('addToWatched');
     let parsedInputs = [];
 
-  const watchedLibrary = { poster, title, genres, releaseDate, id };
-
-  //adding and removing to local storage and change btn text
-  const savedInputsWatched = localStorage.getItem('addToWatched');
-  let parsedInputs = [];
-
   if (savedInputsWatched) {
     try {
       const parsedData = JSON.parse(savedInputsWatched);
