@@ -1,0 +1,104 @@
+div.tui-pagination {
+  margin-top: 0;
+  margin-bottom: 60px;
+  height: 50px;
+}
+
+div.tui-pagination .tui-page-btn {
+  background-color: transparent;
+  border: none;
+  width: 50px;
+  height: 50px;
+  color: gray;
+  border-radius: 6px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  font-family: inherit;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.33;
+  transition: all 250ms cubic-bezier(0.4, 0.5, 0.2, 1);
+  &.tui-last {
+    background-color: var(--secondaryColor);
+  }
+  &.tui-next {
+    background-color: var(--secondaryColor);
+  }
+  &.tui-prev {
+    background-color: var(--secondaryColor);
+  }
+  &.tui-first {
+    background-color: var(--secondaryColor);
+  }
+  &:hover,
+  &:focus {
+    background-color: var(--mainAccentColor);
+    color: var(--secondaryColor);
+    border: none;
+    outline: none;
+  }
+}
+
+div.tui-pagination .tui-is-selected,
+div.tui-pagination strong {
+  background-color: var(--mainAccentColor);
+  color: var(--secondaryColor);
+}
+
+div.tui-pagination .tui-first-child.tui-is-selected {
+  border-left: none;
+}
+
+div.tui-pagination .tui-last-child.tui-is-selected {
+  border-right: none;
+}
+
+div.tui-pagination .tui-ico-next,
+div.tui-pagination .tui-ico-last,
+div.tui-pagination .tui-ico-prev,
+div.tui-pagination .tui-ico-first,
+div.tui-pagination .tui-ico-ellip {
+  background-image: none;
+}
+
+div.tui-pagination .tui-page-btn.tui-next::after {
+  content: '›';
+  position: absolute;
+  color: inherit;
+  font-size: 25px;
+  font-weight: 400;
+}
+
+div.tui-pagination .tui-page-btn.tui-last::after {
+  content: '»';
+  position: absolute;
+  color: inherit;
+  font-weight: 400;
+  font-size: 25px;
+}
+
+div.tui-pagination .tui-page-btn.tui-prev::after {
+  content: '‹';
+  position: absolute;
+  color: inherit;
+  font-weight: 400;
+  font-size: 25px;
+}
+
+div.tui-pagination .tui-page-btn.tui-first::after {
+  content: '«';
+  position: absolute;
+  color: inherit;
+  font-weight: 400;
+  font-size: 25px;
+}
+
+div.tui-pagination .tui-prev-is-ellip::after,
+div.tui-pagination .tui-next-is-ellip::after {
+  content: '...';
+  position: absolute;
+  color: inherit;
+  font-weight: 400;
+  font-size: 20px;
+}
