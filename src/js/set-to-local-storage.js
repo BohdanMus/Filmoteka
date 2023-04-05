@@ -3,39 +3,45 @@ const BASE_URL = 'https://api.themoviedb.org/3';
 const USER_KEY = '9e4f0ad78cbe1148a9d4c0c8389afc83';
 
 export async function onAddToWatchedList(e) {
-  const watchedBtn = document.querySelector('.js-watchedBtn');
+  watchedBtn = document.querySelector('.js-watchedBtn');
   const modalElements = e.target;
   //get name from modal
   const filmName =
-    modalElements.offsetParent.children[2].firstElementChild.textContent;
+  modalElements.offsetParent.children[2].firstElementChild.textContent;
   //get genres from modal
   const genresString =
-    modalElements.offsetParent.children[2].children[1].children[1]
-      .firstElementChild.lastElementChild.textContent;
-
+  modalElements.offsetParent.children[2].children[1].children[1].firstElementChild.lastElementChild.textContent;
+  
   //get movie by name
   let searchedFilmInfo = '';
   try {
     const getFilm = await axios.get(
       `${BASE_URL}/search/movie?api_key=${USER_KEY}&language=en-US&query=${filmName}`
-    );
-    searchedFilmInfo = getFilm.data.results[0];
-    // console.log(searchedFilmInfo);
-  } catch (error) {
-    console.log(error.name);
-    return;
-  }
-
-  //create object for local store
-  const poster = searchedFilmInfo.poster_path;
-  const title = searchedFilmInfo.original_title
+      );
+      searchedFilmInfo = getFilm.data.results[0];
+      // console.log(searchedFilmInfo);
+    } catch (error) {
+      console.log(error.name);
+      return;
+    }
+    
+    //create object for local store
+    const poster = searchedFilmInfo.poster_path;
+    const title = searchedFilmInfo.original_title
     ? searchedFilmInfo.original_title
     : searchedFilmInfo.title;
-  const genres = genresString.includes(',')
+    const genres = genresString.includes(',')
     ? [genresString.split(', ')]
     : genresString;
-  const releaseDate = searchedFilmInfo.release_date.slice(0, 4);
-  const id = searchedFilmInfo.id;
+    const releaseDate = searchedFilmInfo.release_date.slice(0, 4);
+    const id = searchedFilmInfo.id;
+    
+    const watchedLibrary = { poster, title, genres, releaseDate, id };
+    
+    
+    //adding and removing to local storage and change btn text
+    const savedInputsWatched = localStorage.getItem('addToWatched');
+    let parsedInputs = [];
 
   const watchedLibrary = { poster, title, genres, releaseDate, id };
 
@@ -64,6 +70,7 @@ export async function onAddToWatchedList(e) {
   parsedInputs.push(watchedLibrary);
   localStorage.setItem('addToWatched', JSON.stringify(parsedInputs));
 }
+
 
 export async function onAddToQueueList(e) {
   const queueBtn = document.querySelector('.js-queueBtn');
@@ -117,6 +124,7 @@ export async function onAddToQueueList(e) {
     }
   }
 
+
   const findItem = parsedInputs.find(item => item.id === id);
   if (parsedInputs.length > 0 && findItem) {
     const movieIndex = parsedInputs.indexOf(findItem);
@@ -128,4 +136,14 @@ export async function onAddToQueueList(e) {
   queueBtn.textContent = 'DELETE FROM QUEUE';
   parsedInputs.push(queueLibrary);
   localStorage.setItem('addToQueue', JSON.stringify(parsedInputs));
-}
+
+  
+  }
+  
+
+  
+
+
+
+  
+
