@@ -3,7 +3,7 @@ const BASE_URL = 'https://api.themoviedb.org/3';
 const USER_KEY = '9e4f0ad78cbe1148a9d4c0c8389afc83';
 
 export async function onAddToWatchedList(e) {
-  watchedBtn = document.querySelector('.js-watchedBtn');
+  const watchedBtn = document.querySelector('.js-watchedBtn');
   const modalElements = e.target;
   //get name from modal
   const filmName =
