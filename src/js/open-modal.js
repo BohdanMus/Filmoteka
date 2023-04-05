@@ -19,7 +19,7 @@ gallery.addEventListener('click', onOpenModal);
 
 function onModalClose() {
   backDropEl.classList.add('visually-hidden');
-  let movieToFind = {};
+  movieToFind = {};
   modalContentEl.innerHTML = '';
   markup = '';
 }
@@ -41,7 +41,7 @@ export function onOpenModal(event) {
   movieModalRender(movieArray, listId);
   //-------------------------------------------------------------------------------------------
   const watchedBtn = document.querySelector('.js-watchedBtn');
-  const filmId = event.target.dataset.id;
+  // const filmId = event.target.dataset.id;
   const watchedStatus = JSON.parse(localStorage.getItem('addToWatched')).find(
     film => film.id === Number(listId)
   );
