@@ -58,9 +58,7 @@
   flex-direction: column;
   align-items: center;
   margin-bottom: 20px;
-
   background-color: transparent;
-  box-shadow: inset 2px 2px 5px #babecc, inset -5px -5px 10px #fff;
 
 //   @include mobile {
 //     width: 100%;
@@ -113,7 +111,6 @@
 }
 
 .sns-list {
-  margin-right: 10px;
   margin-left: auto;
 }
 
@@ -171,13 +168,6 @@
   border-radius: 10%;
   border: none;
   margin-bottom: 10px;
-  box-shadow: inset 2px 2px 5px #babecc, inset -5px -5px 10px #fff;
-
-  &:hover,
-  &:focus {
-    box-shadow: inset 1px 1px 2px #babecc, inset -1px -1px 2px #fff;
-  }
-
 }
 
 .team__foto-thumb {
