@@ -150,7 +150,7 @@ async function onOpenModalLibrary(event) {
 
 function onModalClose() {
   backDropEl.classList.add('visually-hidden');
-  movieToFind = {};
+  //movieToFind = {};
   modalContentEl.innerHTML = '';
   markup = '';
 }
