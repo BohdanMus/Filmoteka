@@ -5,7 +5,7 @@ const noImageURL = new URL('/src/images/no-foto.jpg', import.meta.url);
 const alertImageURL = new URL('/src/images/movie-time.jpg', import.meta.url);
 const prePoster = 'https://image.tmdb.org/t/p/original/';
 
-const refs = {
+export const refs = {
   queueBtn: document.querySelector('.button-queue'),
   watchedBtn: document.querySelector('.button-watched'),
   librarylist: document.querySelector('.library-list'),
@@ -18,7 +18,7 @@ createWatchedList();
 
 refs.watchedBtn.addEventListener('click', createWatchedList);
 refs.queueBtn.addEventListener('click', createQueueList);
-// refs.librarylist.addEventListener('click', onOpenModal);
+//refs.librarylist.addEventListener('click', onOpenModal);
 
 function createWatchedList() {
   refs.watchedBtn.classList.add('active');
