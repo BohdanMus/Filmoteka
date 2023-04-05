@@ -153,6 +153,19 @@ function movieModalRender(movieArray, listId) {
       </div>`;
       
       modalContentEl.insertAdjacentHTML('afterbegin', markup);
+
+      //foo for change btn
+      function btnCheckLib(movieName) {
+        const watchedBtn = document.querySelector('.js-watchedBtn');
+        const savedInputsWatched = localStorage.getItem('addToWatched');
+        const parsedInputs = JSON.parse(savedInputsWatched);
+        const findItem = parsedInputs.find(item => item.title === movieName);
+        if (parsedInputs.length > 0 && findItem) {
+          watchedBtn.textContent = 'DELETE FROM WATCHED';
+        }
+        
+      }
+      btnCheckLib(movieName)
     }
     //<div class="btn-block">
     //<button type="button" class="modal-button js-watchedBtn">
