@@ -193,3 +193,4 @@ function movieModalRender(movieArray, listId) {
 //     //ADD TO QUEUE
 // //</button>
 // //</div>;
+}
