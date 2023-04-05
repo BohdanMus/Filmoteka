@@ -60,7 +60,7 @@ export async function onAddToWatchedList(e) {
     watchedBtn.textContent = 'ADD TO WATCHED';
     return;
   }
-  watchedBtn.textContent = 'DELETE FROM WATCHED';
+  watchedBtn.textContent = 'REMOVE FROM WATCHED';
   parsedInputs.push(watchedLibrary);
   localStorage.setItem('addToWatched', JSON.stringify(parsedInputs));
 }
@@ -127,7 +127,7 @@ export async function onAddToQueueList(e) {
     queueBtn.textContent = 'ADD TO QUEUE';
     return;
   }
-  queueBtn.textContent = 'DELETE FROM QUEUE';
+  queueBtn.textContent = 'REMOVE FROM QUEUE';
   parsedInputs.push(queueLibrary);
   localStorage.setItem('addToQueue', JSON.stringify(parsedInputs));
 
