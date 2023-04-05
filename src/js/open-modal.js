@@ -4,7 +4,7 @@ import { fetchMovies, prePoster, galleryEl } from './API';
 import { noImageURL } from './search-by-keyword';
 import { movieData } from './trending';
 import { searchResult } from './search-by-keyword';
-import {onAddToWatchedList, onAddToQueueList} from './set-to-local-storage';
+import { onAddToWatchedList, onAddToQueueList } from './set-to-local-storage';
 import { modalCloseBtn, modalWindow } from './modal-close';
 const BASE_URL = 'https://api.themoviedb.org/3';
 const USER_KEY = '9e4f0ad78cbe1148a9d4c0c8389afc83';
@@ -104,7 +104,7 @@ export function onOpenModal(event) {
 function movieModalRender(movieArray, listId) {
   modalContentEl.innerHTML = '';
   const movieToFind = movieArray.find(movie => movie.id === Number(listId));
-  
+
   const {
     poster_path,
     original_title,
@@ -117,13 +117,13 @@ function movieModalRender(movieArray, listId) {
     first_air_date = '',
     overview,
   } = movieToFind;
-  
+
   const movieName = original_title ? original_title : name;
   const date = release_date
-  ? release_date.slice(0, 4)
-  : first_air_date.slice(0, 4);
+    ? release_date.slice(0, 4)
+    : first_air_date.slice(0, 4);
   const genres = getGenres(genre_ids);
-  
+
   const icon = `<svg
   width="30"
   height="30"
@@ -180,17 +180,17 @@ function movieModalRender(movieArray, listId) {
 
   modalContentEl.insertAdjacentHTML('afterbegin', markup);
 
-//       </div>
-//       </div>`;
-      
-//       modalContentEl.insertAdjacentHTML('afterbegin', markup);
-//     }
-//     //<div class="btn-block">
-//     //<button type="button" class="modal-button js-watchedBtn">
-//     //ADD TO WATCHED
-//     //</button>
-//     //<button type="button" class="modal-button js-queueBtn">
-//     //ADD TO QUEUE
-// //</button>
-// //</div>;
+  //       </div>
+  //       </div>`;
+
+  //       modalContentEl.insertAdjacentHTML('afterbegin', markup);
+  //     }
+  //     //<div class="btn-block">
+  //     //<button type="button" class="modal-button js-watchedBtn">
+  //     //ADD TO WATCHED
+  //     //</button>
+  //     //<button type="button" class="modal-button js-queueBtn">
+  //     //ADD TO QUEUE
+  // //</button>
+  // //</div>;
 }
