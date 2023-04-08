@@ -1,103 +1,118 @@
-import axios from 'axios';
-import { genresArray, getGenres } from './genres';
-import { fetchMovies, prePoster, galleryEl } from './API';
-import { noImageURL } from './search-by-keyword';
-import { movieData } from './trending';
-import { searchResult } from './search-by-keyword';
-import { onAddToWatchedList, onAddToQueueList } from './set-to-local-storage';
-import { modalCloseBtn, modalWindow } from './modal-close';
-const BASE_URL = 'https://api.themoviedb.org/3';
-const USER_KEY = '9e4f0ad78cbe1148a9d4c0c8389afc83';
-const gallery = document.querySelector('.gallery-list');
-const modalEl = document.querySelector('.modal');
-const backDropEl = document.querySelector('.backdrop');
-const modalContentEl = document.querySelector('.modal');
-const testContainerEl = document.querySelector('.test-container');
-let markup = '';
+import axios from 'axios'
+import {genresArray, getGenres} from './genres'
+import {fetchMovies, prePoster, galleryEl} from './API'
+import {noImageURL} from './search-by-keyword'
+import {movieData} from './trending'
+import {searchResult} from './search-by-keyword'
+import {onAddToWatchedList, onAddToQueueList} from './set-to-local-storage'
+import {modalCloseBtn, modalWindow} from './modal-close'
+import {getMovieTrailer} from "./youtube-trailer"
 
-gallery.addEventListener('click', onOpenModal);
+const gallery = document.querySelector('.gallery-list')
+const modalEl = document.querySelector('.modal')
+const backDropEl = document.querySelector('.backdrop')
+const modalContentEl = document.querySelector('.modal')
+const testContainerEl = document.querySelector('.test-container')
+let markup = ''
+let movieID = ''
+gallery.addEventListener('click', onOpenModal)
 
 function onModalClose() {
-  backDropEl.classList.add('visually-hidden');
+  backDropEl.classList.add('visually-hidden')
   //let movieToFind = {};
-  modalContentEl.innerHTML = '';
-  markup = '';
+  modalContentEl.innerHTML = ''
+  markup = ''
 }
-const createListCard = document.querySelector('.card');
+
+const createListCard = document.querySelector('.card')
 
 export function onOpenModal(event) {
-  let movieArray = [];
-  event.preventDefault();
+  let movieArray = []
+  event.preventDefault()
   if (event.currentTarget === event.target) {
-    return;
+    return
   }
 
-  const list = event.target.closest('li');
-  const listId = list.dataset.id;
-  backDropEl.classList.remove('visually-hidden');
+  const list = event.target.closest('li')
+  movieID = list.dataset.id
+  backDropEl.classList.remove('visually-hidden')
 
-  movieArray = searchResult.length > 0 ? searchResult[1] : movieData;
+  movieArray = searchResult.length > 0 ? searchResult[1] : movieData
 
-  movieModalRender(movieArray, listId);
+  movieModalRender(movieArray, movieID)
   //-------------------------------------------------------------------------------------------
-  const watchedBtn = document.querySelector('.js-watchedBtn');
+  const watchedBtn = document.querySelector('.js-watchedBtn')
   if (localStorage.getItem('addToWatched')) {
     const watchedStatus = JSON.parse(localStorage.getItem('addToWatched')).find(
-      film => film.id === Number(listId)
-    );    
+      film => film.id === Number(movieID)
+    )
     if (watchedStatus) {
-      watchedBtn.textContent = 'REMOVE FROM WATCHED';
-    } 
+      watchedBtn.textContent = 'REMOVE FROM WATCHED'
+    }
   }
   //---------------------------------------------------------------------------------------------
-  const queueBtn = document.querySelector('.js-queueBtn');
+  const queueBtn = document.querySelector('.js-queueBtn')
+  const trailerBtn = document.querySelector('.js-trailerBtn')
+  if (localStorage.getItem('addToWatched')) {
+    const watchedStatus = JSON.parse(localStorage.getItem('addToWatched')).find(
+      film => film.id === Number(movieID)
+    )
+    if (watchedStatus) {
+      watchedBtn.textContent = 'REMOVE FROM WATCHED'
+    }
+  }
+  //---------------------------------------------------------------------------------------------
+
   if (localStorage.getItem('addToQueue')) {
     const queueStatus = JSON.parse(localStorage.getItem('addToQueue')).find(
-      film => film.id === Number(listId)
-    );
-     if (queueStatus) {
-      queueBtn.textContent = 'REMOVE FROM QUEUE';
-    }     
+      film => film.id === Number(movieID)
+    )
+    if (queueStatus) {
+      queueBtn.textContent = 'REMOVE FROM QUEUE'
+    }
   }
   //---------------------------------------------------------------------------------------------
-  const closeBtnEl = document.querySelector('.modal-close');
-  closeBtnEl.addEventListener('click', onModalClose);
+  const closeBtnEl = document.querySelector('.modal-close')
+  closeBtnEl.addEventListener('click', onModalClose)
   document.addEventListener('keydown', e => {
     if (e.keyCode === 27) {
-      onModalClose();
+      onModalClose()
     }
-  });
+  })
   backDropEl.addEventListener('click', e => {
     if (e.target === e.currentTarget) {
-      onModalClose();
+      onModalClose()
     }
-  });
+  })
   //---------------------Лістенери інших функцій на кнопки модалки фільма ---- вмикаються при відкритті вікна!------
   //-------modal-close.js-------------
   closeBtnEl.addEventListener('click', () => {
-    onModalClose();
-  });
+    onModalClose()
+  })
 
   modalContentEl.addEventListener('click', e => {
     if (e.target === modalWindow) {
-      onModalClose();
+      onModalClose()
     }
-  });
+  })
   document.addEventListener('keydown', e => {
     if (e.code === 'Escape') {
-      onModalClose();
+      onModalClose()
     }
-  });
+  })
   //-------modal-close.js-------------
   // const watchedBtn = document.querySelector('.js-watchedBtn');
   // const queueBtn = document.querySelector('.js-queueBtn');
-  watchedBtn.addEventListener('click', onAddToWatchedList);
-  queueBtn.addEventListener('click', onAddToQueueList);
+  watchedBtn.addEventListener('click', onAddToWatchedList)
+  queueBtn.addEventListener('click', onAddToQueueList)
+  trailerBtn.addEventListener('click', () => {
+    getMovieTrailer(movieID)
+  })
 }
 
 function movieModalRender(movieArray, listId) {
-  modalContentEl.innerHTML = '';
-  const movieToFind = movieArray.find(movie => movie.id === Number(listId));
+  modalContentEl.innerHTML = ''
+  const movieToFind = movieArray.find(movie => movie.id === Number(listId))
 
   const {
     poster_path,
@@ -110,13 +125,13 @@ function movieModalRender(movieArray, listId) {
     release_date = '',
     first_air_date = '',
     overview,
-  } = movieToFind;
+  } = movieToFind
 
-  const movieName = original_title ? original_title : name;
+  const movieName = original_title ? original_title : name
   const date = release_date
     ? release_date.slice(0, 4)
-    : first_air_date.slice(0, 4);
-  const genres = getGenres(genre_ids);
+    : first_air_date.slice(0, 4)
+  const genres = getGenres(genre_ids)
 
   const icon = `<svg
   width="30"
@@ -127,7 +142,7 @@ function movieModalRender(movieArray, listId) {
   >
   <path d="M8 8L22 22" stroke="black" stroke-width="2" />
   <path d="M8 22L22 8" stroke="black" stroke-width="2" />
-  </svg>`;
+  </svg>`
   // <button type="button" class="modal-close" data-modal-close>
   //   ${icon}
   // </button>;
@@ -164,15 +179,17 @@ function movieModalRender(movieArray, listId) {
       </div>
     </div>
     <h2 class="about-film">ABOUT</h2>
-    <p class="description-film-info">${overview} 
+    <p class="description-film-info">${overview}
     </p>
     <div class="btn-block">
-    <button type="button" class="modal-button js-watchedBtn">ADD TO WATCHED</button>
-      <button type="button" class="modal-button js-queueBtn">ADD TO QUEUE</button>
+        <button type="button" class="modal-button js-watchedBtn">ADD TO WATCHED</button>
+        <button type="button" class="modal-button js-queueBtn">ADD TO QUEUE</button>
+        <button type="button" class="modal-button js-trailerBtn">Watch Trailer</button>
     </div>
-  </div>`;
+    <div class="trailerContainer"></div>
+  </div>`
 
-  modalContentEl.insertAdjacentHTML('afterbegin', markup);
+  modalContentEl.insertAdjacentHTML('afterbegin', markup)
 
   //       </div>
   //       </div>`;
