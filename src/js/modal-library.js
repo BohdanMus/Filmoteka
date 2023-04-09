@@ -11,6 +11,8 @@ export const prePoster = 'https://image.tmdb.org/t/p/original/';
 const libraryEl = document.querySelector('.library-list');
 const backDropEl = document.querySelector('.backdrop');
 const modalContentEl = document.querySelector('.modal');
+const alertWrapp = document.querySelector('.empty-wrapp');
+
 let markup = '';
 libraryEl.addEventListener('click', onOpenModalLibrary);
 
@@ -20,7 +22,7 @@ function getMovieID(event) {
     return;
   }
   const list = event.target.closest('li');
-  const listId = list.dataset.id;
+  const listId = list?.dataset.id || {};
   return listId;
 }
 
@@ -113,16 +115,18 @@ async function onButtonQueue(event) {
 
 async function onOpenModalLibrary(event) {
   const filmId = getMovieID(event);
+  if (!filmId || filmId === {}) {
+    return;
+  }
   const filmData = await fetchMovie(filmId);
-  const watchedArray = localStorage.getItem('addToWatched');
-  const queueArray = localStorage.getItem('addToQueue');
 
-  const watchedStatus = JSON.parse(watchedArray).find(
-    film => film.id === Number(filmId)
-  );
-  const queueStatus = JSON.parse(queueArray).find(
-    film => film.id === Number(filmId)
-  );
+  console.log(filmId);
+  const watchedArray = JSON.parse(localStorage.getItem('addToWatched')) || [];
+  const queueArray = JSON.parse(localStorage.getItem('addToQueue')) || [];
+
+  const watchedStatus = watchedArray.find(film => film.id === Number(filmId));
+  // console.log(watchedStatus);
+  const queueStatus = queueArray.find(film => film.id === Number(filmId));
   const watchedButtonContent = watchedStatus
     ? 'REMOVE FROM WATCHED'
     : 'ADD TO WATCHED';
